@@ -21,38 +21,28 @@ public class Paciente {
     private String nombre;
     private String domicilio;
     private long telefono;
-    private double altura;
-    private double pesoActual;
-    private LocalDate fechaNacimiento;
-    private char genero;
-    private ArrayList<Paciente>lista = new ArrayList();;
+    private boolean estado;
 
     public Paciente() {   
     }
 
-    public Paciente(int dni, String apellido, String nombre, String domicilio, long telefono, double altura, double pesoActual, LocalDate fechaNacimiento, char genero) {
+    public Paciente(int dni, String apellido, String nombre, String domicilio, long telefono, boolean estado) {
         this.dni = dni;
         this.apellido = apellido;
         this.nombre = nombre;
         this.domicilio = domicilio;
         this.telefono = telefono;
-        this.altura = altura;
-        this.pesoActual = pesoActual;
-        this.fechaNacimiento = fechaNacimiento;
-        this.genero = genero;
+        this.estado = estado;
     }
 
-    public Paciente(int idPaciente, int dni, String apellido, String nombre, String domicilio, long telefono, double altura, double pesoActual, LocalDate fechaNacimiento, char genero) {
+    public Paciente(int idPaciente, int dni, String apellido, String nombre, String domicilio, long telefono, boolean estado) {
         this.idPaciente = idPaciente;
         this.dni = dni;
         this.apellido = apellido;
         this.nombre = nombre;
         this.domicilio = domicilio;
         this.telefono = telefono;
-        this.altura = altura;
-        this.pesoActual = pesoActual;
-        this.fechaNacimiento = fechaNacimiento;
-        this.genero = genero;
+        this.estado = estado;
     }
 
     public int getIdPaciente() {
@@ -103,76 +93,49 @@ public class Paciente {
         this.telefono = telefono;
     }
 
-    public double getAltura() {
-        return altura;
+    public boolean isEstado() {
+        return estado;
     }
 
-    public void setAltura(double altura) {
-        this.altura = altura;
+    public void setEstado(boolean estado) {
+        this.estado = estado;
     }
 
-    public double getPesoActual() {
-        return pesoActual;
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 11 * hash + this.idPaciente;
+        hash = 11 * hash + this.dni;
+        return hash;
     }
 
-    public void setPesoActual(double pesoActual) {
-        this.pesoActual = pesoActual;
-    }
-
-    public LocalDate getFechaNacimiento() {
-        return fechaNacimiento;
-    }
-
-    public void setFechaNacimiento(LocalDate fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
-    }
-
-    public char getGenero() {
-        return genero;
-    }
-
-    public void setGenero(char genero) {
-        this.genero = genero;
-    }
-
-    public ArrayList<Paciente> getLista() {
-        return lista;
-    }
-
-    public void setLista(ArrayList<Paciente> lista) {
-        this.lista = lista;
-    }
-    
-
-    public void cargarPaciente(Paciente paciente){
-        try {
-            lista.add(paciente);
-            System.out.println("Paciente agregado con exito!");
-        } catch (Exception e) {
-            System.out.println("Error");
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
         }
-        
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Paciente other = (Paciente) obj;
+        if (this.idPaciente != other.idPaciente) {
+            return false;
+        }
+        if (this.dni != other.dni) {
+            return false;
+        }
+        return true;
     }
-    
-    public void borrarPaciente(int dni){
-        boolean flag = false;
-        for (Paciente aux : lista) {
-            if (aux.getDni()==dni) {
-                lista.remove(aux);
-                flag = true;
-                break;
-            }
-        }
-        if (flag) {
-            JOptionPane.showMessageDialog(null,"Paciente borrado");
-        }else{
-            JOptionPane.showMessageDialog(null,"Error");
-        }
-    };
+
     @Override
     public String toString() {
-        return "Paciente{" + "idPaciente=" + idPaciente + ", dni=" + dni + ", apellido=" + apellido + ", nombre=" + nombre + ", domicilio=" + domicilio + ", telefono=" + telefono + ", altura=" + altura + ", pesoActual=" + pesoActual + ", fechaNacimiento=" + fechaNacimiento + ", genero=" + genero + '}';
+        return "Paciente{" + "idPaciente=" + idPaciente + ", dni=" + dni + ", apellido=" + apellido + ", nombre=" + nombre + '}';
     }
+
+   
     
-    
+      
 }
