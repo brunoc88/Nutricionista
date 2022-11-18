@@ -5,11 +5,13 @@
  */
 package Modelo;
 
+import Data.ComidaData;
 import Data.PacienteData;
 import data.Conexion;
 import java.sql.Connection;
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -20,9 +22,84 @@ public class Main {
 
     
     public static void main(String[] args) {
+        
+ //----------------PRUEBA CONEXION----------------//
         Connection con=Conexion.getConexion();
-        PacienteData p1 = new PacienteData();
-        Paciente paciente = new Paciente(33112221, "Gonzales", "Julian", "soyloconcha",15444546, true);
-        p1.guardarPaciente(paciente);
+        
+ //----------------PRUEBA PACIENTE DATA---------------/
+ 
+       // PacienteData p1 = new PacienteData();
+        
+        //GUARDAR PACIENTE
+        //Paciente paciente = new Paciente(33112221, "Gonzales", "Julian", "soyloconcha",15444546, true);
+        //p1.guardarPaciente(paciente);
+        
+        //OBTENER PACIENTES
+        //ArrayList<Paciente> listaTemp=p1.obtenerPaciente();
+        //System.out.println(listaTemp);
+        
+        //OBTENER PACIENTE POR ID
+       // Paciente pa=p1.obtenerPacientePorId(5);
+        // System.out.println(pa);
+        
+         //BORRAR LOGICAMENTE PACIENTE
+         //  p1.borrarPaciente(1);
+         
+        //ACTUALIZAR PACIENTE con el metodo obtener PACIENTE POR ID.
+         //pa.setNombre("Ana luz");
+         //p1.actualizaPaciente(pa);
+        
+//-----------------------PRUEBA COMIDA DATA------------------/
+
+
+          //ComidaData comp= new ComidaData();
+         
+         //AGREGAR COMIDA A LA BASE DE DATOS
+         //Comida com = new Comida("Arroz con pollo", "cebolla arroz y pollo",800,true);
+         //comp.guardarComida(com);
+         
+         
+         //MOSTRAR COMIDAS
+         //ArrayList<Comida> listaComida= comp.obtenerComida();
+         //System.out.println(listaComida);
+    
+         
+         //MOSTRAR COMIDAS POR ID
+         //Comida comi= comp.obtenerComidaPorId(1);
+         //System.out.println(comi);
+         
+         
+         //ACTUALIZAR COMIDA
+         //comi.setNombre("Arroz con pollo de campo");
+         //comp.actualizaComida(comi);
+         
+         //BORRAR COMIDA
+         //comp.borrarComida(1);
+        
     }
+    
+//------------------------PRUEBA DIETA DATA------------------------//
+    
+    
+    
+      
+    
+    
+    
+    
+    
+//---------------------PRUEBA ITEMCOMIDAS DATA------------------//
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
