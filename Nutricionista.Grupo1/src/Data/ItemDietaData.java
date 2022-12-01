@@ -5,10 +5,22 @@
  */
 package Data;
 
+import java.sql.Connection;
+
 /**
  *
  * @author Bruno
  */
 public class ItemDietaData {
+     private Connection con;
+
+    public ItemDietaData() {
+        this.con=data.Conexion.getConexion();
+    }
     
+    
+    
+  public void GuardarComidaDieta(Dieta d, Comida c){
+      
+  }
 }

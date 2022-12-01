@@ -6,6 +6,7 @@
 package Modelo;
 
 import Data.ComidaData;
+import Data.DietaData;
 import Data.PacienteData;
 import data.Conexion;
 import java.sql.Connection;
@@ -80,6 +81,10 @@ public class Main {
     
 //------------------------PRUEBA DIETA DATA------------------------//
     
+    DietaData dieta= new DietaData();
+    //AGREGAR COMIDA A LA BASE DE DATOS
+    //Dieta die = new Dieta(1, LocalDate.MAX, LocalDate.MIN, 53, 3000,55, true);
+    //dieta.guardarDieta(die);
     
     
       
