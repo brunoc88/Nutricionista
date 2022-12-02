@@ -13,6 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -144,6 +145,65 @@ public void eliminarDieta(int idDieta){
         return die;
          
 }
+       public Dieta buscarDietaPorDni(int dni) {
+        die =new Dieta();
+        pa=new PacienteData();
+        String sql= "SELECT * FROM dieta WHERE dni = ?";
+        
+        try {
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.setInt(1, dni);
+            ResultSet rs=ps.executeQuery();
+            
+            if(rs.next()){              
+                die.setIdDieta(dni);
+                die.setIdPaciente(pa.obtenerPacientePorDni(rs.getInt("dni")));
+                die.setInicio(rs.getDate("inicio").toLocalDate());
+                die.setFin(rs.getDate("fin").toLocalDate());
+                die.setPesoBuscado(rs.getDouble("pesoBuscado"));
+                die.setLimiteCalorico(rs.getInt("limiteCalorico"));
+                die.setPesoInicial(rs.getDouble("pesoInicial"));
+            }else {
+                 JOptionPane.showMessageDialog(null, "No se encontre la dieta");
+                
+            }
+            
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "DietaData Sentencia SQL erronea-obtenerDietaPordni");
+        }
+        return die;
+         
+}
+        public ArrayList<Paciente> pacientesBajar10(){
+     ArrayList<Paciente> listaPaciente= new ArrayList();
+     
+      String sql="SELECT * FROM paciente, dieta WHERE paciente.id_paciente=dieta.id_paciente and (paciente.pesoActual-dieta.pesoBuscado)>?\";";
+        
+        try {
+            PreparedStatement ps=con.prepareStatement(sql);
+            
+            ResultSet rs=ps.executeQuery();//select
+            
+            while(rs.next()){
+            
+               Paciente pa =new Paciente();
+                
+               
+                listaPaciente.add(pa);
+            }
+            
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "DietaData Sentencia SQL erronea-ObtenerPacientequeBajar10");
+        }
+    return listaPaciente;
+    }
+ 
+       
+       
 }
 
 

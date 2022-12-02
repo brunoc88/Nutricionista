@@ -29,7 +29,7 @@ public class Main {
         
  //----------------PRUEBA PACIENTE DATA---------------/
  
-       // PacienteData p1 = new PacienteData();
+        PacienteData p1 = new PacienteData();
         
         //GUARDAR PACIENTE
         //Paciente paciente = new Paciente(33112221, "Gonzales", "Julian", "soyloconcha",15444546, true);
@@ -38,6 +38,12 @@ public class Main {
         //OBTENER PACIENTES
         //ArrayList<Paciente> listaTemp=p1.obtenerPaciente();
         //System.out.println(listaTemp);
+        
+         //OBTENER PACIENTE POR dni
+       Paciente pa=p1.obtenerPacientePorDni(33964636);
+        System.out.println(pa);
+       
+        
         
         //OBTENER PACIENTE POR ID
        // Paciente pa=p1.obtenerPacientePorId(5);
@@ -81,7 +87,7 @@ public class Main {
     
 //------------------------PRUEBA DIETA DATA------------------------//
     
-    DietaData dieta= new DietaData();
+   // DietaData dieta= new DietaData();
     //AGREGAR COMIDA A LA BASE DE DATOS
     //Dieta die = new Dieta(1, LocalDate.MAX, LocalDate.MIN, 53, 3000,55, true);
     //dieta.guardarDieta(die);

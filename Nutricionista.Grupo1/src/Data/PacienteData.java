@@ -117,6 +117,32 @@ public class PacienteData {
         return pa;
          
 }
+     public Paciente obtenerPacientePorDni(int dni) {
+        String sql= "SELECT * FROM paciente WHERE estado = 1 AND dni = ?";
+        
+        Paciente pa = new Paciente();
+        try {
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.setInt(1, dni);
+            ResultSet rs=ps.executeQuery();
+            
+            if(rs.next()){              
+                pa.setDni(rs.getInt("dni"));
+                pa.setApellido(rs.getString("apellido"));
+                pa.setNombre(rs.getString("nombre"));
+                pa.setDomicilio(rs.getString("domicilio"));
+                pa.setTelefono(rs.getLong("telefono"));
+                pa.setEstado(rs.getBoolean("estado"));
+                
+            }
+            
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "PacienteData Sentencia SQL erronea-obtenerPacientePordni");
+        }
+        return pa;
+     }
      public void borrarPaciente (int idPaciente){
         String sql="UPDATE paciente SET estado=false WHERE idPaciente=?";
         try {
