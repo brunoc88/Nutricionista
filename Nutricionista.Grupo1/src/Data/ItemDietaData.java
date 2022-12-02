@@ -71,13 +71,13 @@ public class ItemDietaData {
             JOptionPane.showMessageDialog(null, "Error, no se pudo borrar la comida de la dieta");
         }
 }
-    public ArrayList<Comida> obtenerComidaPorDieta(/*QUE PASAMOS POR PARAMETRO?*/){
+    public ArrayList<Comida> obtenerComidaPorDieta( int idDieta){
      ArrayList<Comida> listaComida= new ArrayList();
       String sql="SELECT * FROM itemcomidas, comida WHERE itemcomidas.idComida= comida.idComida and itemcomidas.idDieta=?";
         
         try {
             PreparedStatement ps=con.prepareStatement(sql);
-           /* ps.setInt(1,); QUE EJECUTAMOS?*/
+            ps.setInt(1,idDieta);
             ResultSet rs=ps.executeQuery();
             
             while(rs.next()){
@@ -99,10 +99,41 @@ public class ItemDietaData {
             JOptionPane.showMessageDialog(null, "ITEMSData Sentencia SQL erronea-ObtenerComidaporDieta");
         }
     return listaComida;
+    
     }
   
-  
-  
+   public int caloriasTotal(int idDieta ){
+      String sql="SELECT SUM(co.calorias)as CaloriasTotal FROM itemcomidas as ic "
+              + "INNER JOIN comida as co on ic.idComida=co.idComida INNER JOIN dieta as dt on ic.idDieta=dt.idDieta WHERE dt.idDieta=?;";
+      int CaloriasTotal=0;
+      try {
+       
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.setInt(1,idDieta);
+            
+             ResultSet rs=ps.executeQuery();
+            
+            if(rs.next()){              
+            CaloriasTotal=rs.getInt("CaloriasTotal");
+            
+            
+            }else {
+                 JOptionPane.showMessageDialog(null, "No se encontre las calorias total");
+                
+            }
+            
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "ItemscomidasData Sentencia SQL erronea-obtenerCaloriasTotal");
+        }
+        return CaloriasTotal;
+         
+}
+   
+    
+    
+
   
   
   

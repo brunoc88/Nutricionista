@@ -40,8 +40,8 @@ public class Main {
         //System.out.println(listaTemp);
         
          //OBTENER PACIENTE POR dni
-       Paciente pa=p1.obtenerPacientePorDni(33964636);
-        System.out.println(pa);
+        //Paciente pa=p1.obtenerPacientePorDni(33964636);
+       // System.out.println(pa);
        
         
         
