@@ -163,5 +163,31 @@ public class ComidaData {
         }
     }
    //AGREGAR LO DE BUSCAR COMIDA POR INICIALES POR EJ AR = ARROZ LIKE!(QUE LO CONTENGA O QUE EMPIEZA).
-   
+   public ArrayList<Comida> buscaComida(String nombre) {
+        ArrayList<Comida> listaComida = new ArrayList();
+
+        String sql = "SELECT * FROM comida WHERE estado = 1 and nombre like '?%?%' ";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, nombre);
+            ResultSet rs = ps.executeQuery();//select
+           
+            while (rs.next()) {
+
+                Comida c = new Comida();
+                c.setNombre(rs.getString("nombre"));
+                c.setNombre(rs.getString("detalle"));
+                c.setCalorias(rs.getInt("calorias"));
+
+                listaComida.add(c);
+            }
+
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "ak Busca comida errorComidaData Sentencia SQL erronea-ObtenerComida");
+        }
+        return listaComida;
+    }
 }

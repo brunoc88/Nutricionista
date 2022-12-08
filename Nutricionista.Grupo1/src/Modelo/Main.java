@@ -40,14 +40,14 @@ public class Main {
         //System.out.println(listaTemp);
         
          //OBTENER PACIENTE POR dni
-        //Paciente pa=p1.obtenerPacientePorDni(33964636);
-       // System.out.println(pa);
+        //Paciente pa=p1.obtenerPacientePorDni(39797012);
+        //System.out.println(pa);
        
         
         
         //OBTENER PACIENTE POR ID
-       // Paciente pa=p1.obtenerPacientePorId(5);
-        // System.out.println(pa);
+       ///Paciente pa=p1.obtenerPacientePorId(5);
+       // System.out.println(pa);
         
          //BORRAR LOGICAMENTE PACIENTE
          //  p1.borrarPaciente(1);
@@ -59,7 +59,7 @@ public class Main {
 //-----------------------PRUEBA COMIDA DATA------------------/
 
 
-          //ComidaData comp= new ComidaData();
+          ComidaData comp= new ComidaData();
          
          //AGREGAR COMIDA A LA BASE DE DATOS
          //Comida com = new Comida("Arroz con pollo", "cebolla arroz y pollo",800,true);
@@ -83,6 +83,8 @@ public class Main {
          //BORRAR COMIDA
          //comp.borrarComida(1);
         
+          ArrayList<Comida> listaComida= comp.buscaComida("ar");
+         System.out.println(listaComida);
     }
     
 //------------------------PRUEBA DIETA DATA------------------------//
