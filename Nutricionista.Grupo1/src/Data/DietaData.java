@@ -9,11 +9,14 @@ import Modelo.Paciente;
 import Modelo.Dieta;
 import Data.PacienteData;
 import Modelo.Comida;
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -192,7 +195,10 @@ public class DietaData {
             while (rs.next()) {
 
                 Paciente pa = new Paciente();
-
+                pa.setNombre(rs.getString("nombre"));
+                pa.setApellido(rs.getString("apellido"));
+                pa.setDni(rs.getInt("dni"));
+           
                 listaPaciente.add(pa);
             }
 
@@ -204,4 +210,55 @@ public class DietaData {
         return listaPaciente;
     }
 
+    public Dieta buscarDietaPorFecha(int dni, LocalDate inicio, LocalDate fin  ) {
+        die = new Dieta();
+        pa = new PacienteData();
+        Paciente pac= new Paciente();
+        
+        String sql = "SELECT pa.dni,pa.apellido, pa.nombre, dt.inicio, dt.fin FROM dieta as dt INNER JOIN paciente as pa on pa.idPaciente=dt.idPaciente"
+                + " WHERE pa.dni=? and (inicio BETWEEN ? And ? Or fin BETWEEN ? and ? );";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, dni);
+            ps.setDate(2, Date.valueOf(inicio));
+            ps.setDate(3, Date.valueOf(inicio));
+            ps.setDate(4, Date.valueOf(fin));
+            ps.setDate(5, Date.valueOf(fin));
+            
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                
+                die.setIdDieta(dni);
+                die.setIdPaciente(pa.obtenerPacientePorDni(rs.getInt("dni")));
+                
+                die.setIdPaciente(pa);
+                die.setInicio(rs.getDate("inicio").toLocalDate());
+                die.setFin(rs.getDate("fin").toLocalDate());
+               
+            } else {
+                JOptionPane.showMessageDialog(null, "No se encontre la dieta");
+
+            }
+
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "DietaData Sentencia SQL erronea-obtenerDietaPordni");
+        }
+        return die;
+
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
+
