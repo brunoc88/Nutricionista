@@ -83,7 +83,7 @@ public class Main {
          //BORRAR COMIDA
          //comp.borrarComida(1);
         
-          ArrayList<Comida> listaComida= comp.buscaComida("ar");
+         ArrayList<Comida> listaComida= comp.buscaComida("ar");
          System.out.println(listaComida);
     }
     
