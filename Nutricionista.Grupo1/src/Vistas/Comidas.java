@@ -196,6 +196,11 @@ public class Comidas extends javax.swing.JInternalFrame {
         jLabel5.setText("Calorias :");
 
         jTFCalorias.setEnabled(false);
+        jTFCalorias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTFCaloriasActionPerformed(evt);
+            }
+        });
         jTFCalorias.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTFCaloriasKeyTyped(evt);
@@ -205,6 +210,11 @@ public class Comidas extends javax.swing.JInternalFrame {
         jLabel6.setText("Estado:");
 
         jTFEstado.setEnabled(false);
+        jTFEstado.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFEstadoKeyTyped(evt);
+            }
+        });
 
         jLabel7.setText("Id:");
 
@@ -478,6 +488,7 @@ public class Comidas extends javax.swing.JInternalFrame {
         jRBBorrarComida.setSelected(false);
         jRBBuscNombre.setSelected(false);
         jRBBuscActivas.setSelected(false);
+        jTFEstado.setEnabled(false);
 
         jBCargar.setEnabled(false);
         jBEliminar.setEnabled(false);
@@ -614,6 +625,20 @@ public class Comidas extends javax.swing.JInternalFrame {
     private void jTFNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFNombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTFNombreActionPerformed
+
+    private void jTFCaloriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFCaloriasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTFCaloriasActionPerformed
+
+    private void jTFEstadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFEstadoKeyTyped
+        // TODO add your handling code here:
+           char c = evt.getKeyChar();
+
+        if ((c < 'a' || c > 'z' ) && (c < 'A' || c > 'Z')) {
+            evt.consume();
+        }
+        
+    }//GEN-LAST:event_jTFEstadoKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
