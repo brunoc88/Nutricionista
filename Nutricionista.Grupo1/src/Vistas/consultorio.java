@@ -5,15 +5,15 @@
  */
 package Vistas;
 
+import Data.ComidaData;
+
 /**
  *
  * @author Ana luz
  */
 public class consultorio extends javax.swing.JFrame {
+    private ComidaData comidaData;
 
-    /**
-     * Creates new form consultorio
-     */
     public consultorio() {
         initComponents();
     }
@@ -79,6 +79,11 @@ public class consultorio extends javax.swing.JFrame {
         jCheckBoxMenuItem1.setFont(new java.awt.Font("Segoe Script", 1, 25)); // NOI18N
         jCheckBoxMenuItem1.setSelected(true);
         jCheckBoxMenuItem1.setText("Comida");
+        jCheckBoxMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jCheckBoxMenuItem1);
         jMenu1.add(jSeparator2);
 
@@ -142,6 +147,15 @@ public class consultorio extends javax.swing.JFrame {
     private void jCheckBoxMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBoxMenuItem6ActionPerformed
+
+    private void jCheckBoxMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem1ActionPerformed
+        Comidas comi=new Comidas();
+        comi.setVisible(true);
+        escritorio.add(comi);
+        escritorio.repaint();
+        //comi.show();??//no se que hace
+        
+    }//GEN-LAST:event_jCheckBoxMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments

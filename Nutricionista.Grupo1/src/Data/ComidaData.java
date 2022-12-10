@@ -71,8 +71,8 @@ public class ComidaData {
                 Comida c=new Comida();
                 
                 c.setIdComida(rs.getInt("idComida"));
-                c.setNombre(rs.getString("Nombre"));
-                c.setNombre(rs.getString("detalle"));
+                c.setNombre(rs.getString("nombre"));
+                c.setDetalle(rs.getString("detalle"));
                 c.setCalorias(rs.getInt("calorias"));
                 c.setEstado(rs.getBoolean("estado"));
                 
@@ -87,7 +87,8 @@ public class ComidaData {
     return listaComida;
     }
  
-  public Comida obtenerComidaPorId(int idComida) {
+  public ArrayList<Comida> obtenerComidaPorId(int idComida) {
+      ArrayList<Comida> listaComida= new ArrayList();
         String sql= "SELECT * FROM comida WHERE estado = 1 AND idComida = ?";
         
         Comida com = new Comida();
@@ -102,7 +103,7 @@ public class ComidaData {
                 com.setDetalle(rs.getString("detalle"));
                 com.setCalorias(rs.getInt("calorias"));
                 com.setEstado(rs.getBoolean("estado"));
-                
+                listaComida.add(com);
             }
             
             ps.close();
@@ -111,7 +112,7 @@ public class ComidaData {
             JOptionPane.showMessageDialog(null, "No se pudo obtener comida");
         }
         
-        return com;
+       return listaComida;
          
     }
   
@@ -140,6 +141,7 @@ public class ComidaData {
             ps.setString(2, comida.getDetalle());
             ps.setInt(3, comida.getCalorias());
             ps.setBoolean(4, comida.isEstado());
+            ps.setInt(5, comida.getIdComida());
             
             ps.executeUpdate();
             
@@ -161,23 +163,22 @@ public class ComidaData {
             }
 
         }
-    }
-   //AGREGAR LO DE BUSCAR COMIDA POR INICIALES POR EJ AR = ARROZ LIKE!(QUE LO CONTENGA O QUE EMPIEZA).
-   public ArrayList<Comida> buscaComida(String nombre) {
+   }
+    public ArrayList<Comida> buscaComida(String nombre) {
         ArrayList<Comida> listaComida = new ArrayList();
 
-        String sql = "SELECT * FROM comida WHERE estado = 1 and nombre like '?%?%' ";
-
+        String sql = "SELECT * FROM comida WHERE estado = 1 and nombre LIKE ? ";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, nombre);
+            ps.setString(1, "%"+nombre+"%");
             ResultSet rs = ps.executeQuery();//select
            
             while (rs.next()) {
 
                 Comida c = new Comida();
+                c.setIdComida(rs.getInt("idComida"));
                 c.setNombre(rs.getString("nombre"));
-                c.setNombre(rs.getString("detalle"));
+                c.setDetalle(rs.getString("detalle"));
                 c.setCalorias(rs.getInt("calorias"));
 
                 listaComida.add(c);
@@ -186,8 +187,47 @@ public class ComidaData {
             ps.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "ak Busca comida errorComidaData Sentencia SQL erronea-ObtenerComida");
+            JOptionPane.showMessageDialog(null, "ak Busca comida errorComidaData Sentencia SQL erronea-ObtenerComida"+ex);
         }
         return listaComida;
     }
 }
+   
+
+   
+   
+   
+   
+   
+   
+   
+   
+   //AGREGAR LO DE BUSCAR COMIDA POR INICIALES POR EJ AR = ARROZ LIKE!(QUE LO CONTENGA O QUE EMPIEZA).
+//   public ArrayList<Comida> buscaComida(String nombre) {
+//        ArrayList<Comida> listaComida = new ArrayList();
+//
+//        String sql = "SELECT * FROM comida WHERE estado = 1 and nombre like '?%?%' ";
+//
+//        try {
+//            PreparedStatement ps = con.prepareStatement(sql);
+//            ps.setString(1, nombre);
+//            ResultSet rs = ps.executeQuery();//select
+//           
+//            while (rs.next()) {
+//
+//                Comida c = new Comida();
+//                c.setNombre(rs.getString("nombre"));
+//                c.setNombre(rs.getString("detalle"));
+//                c.setCalorias(rs.getInt("calorias"));
+//
+//                listaComida.add(c);
+//            }
+//
+//            ps.close();
+//
+//        } catch (SQLException ex) {
+//            JOptionPane.showMessageDialog(null, "ak Busca comida errorComidaData Sentencia SQL erronea-ObtenerComida");
+//        }
+//        return listaComida;
+//    }
+//}

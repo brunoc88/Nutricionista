@@ -209,47 +209,91 @@ public class DietaData {
         }
         return listaPaciente;
     }
-
-    public Dieta buscarDietaPorFecha(int dni, LocalDate inicio, LocalDate fin  ) {
-        die = new Dieta();
+    public ArrayList<Dieta> buscarDietaPorFecha(int dni, LocalDate inicio, LocalDate fin ) {
+        
+        ArrayList<Dieta> dietas = new ArrayList();
+      //  die = new Dieta();
         pa = new PacienteData();
         Paciente pac= new Paciente();
         
-        String sql = "SELECT pa.dni,pa.apellido, pa.nombre, dt.inicio, dt.fin FROM dieta as dt INNER JOIN paciente as pa on pa.idPaciente=dt.idPaciente"
-                + " WHERE pa.dni=? and (inicio BETWEEN ? And ? Or fin BETWEEN ? and ? );";
+        String sql = "SELECT * FROM dieta as dt INNER JOIN paciente as pa on pa.idPaciente=dt.idPaciente WHERE pa.dni= ? AND inicio >= ? and fin <= ? ";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, dni);
             ps.setDate(2, Date.valueOf(inicio));
-            ps.setDate(3, Date.valueOf(inicio));
-            ps.setDate(4, Date.valueOf(fin));
-            ps.setDate(5, Date.valueOf(fin));
+            ps.setDate(3, Date.valueOf(fin));
             
             ResultSet rs = ps.executeQuery();
 
-            if (rs.next()) {
+            while (rs.next()) {
                 
-                die.setIdDieta(dni);
-                die.setIdPaciente(pa.obtenerPacientePorDni(rs.getInt("dni")));
+                 Dieta diet = new Dieta();
                 
-                die.setIdPaciente(pa);
-                die.setInicio(rs.getDate("inicio").toLocalDate());
-                die.setFin(rs.getDate("fin").toLocalDate());
+                diet.setIdDieta(rs.getInt("idDieta"));
+                diet.setIdPaciente(pa.obtenerPacientePorId(rs.getInt("idPaciente")));
+            diet.setInicio(rs.getDate("inicio").toLocalDate());
+                diet.setFin(rs.getDate("fin").toLocalDate());
+                diet.setPesoBuscado(rs.getDouble("pesoBuscado"));
+                diet.setLimiteCalorico(rs.getInt("limiteCalorico"));
+                diet.setPesoInicial(rs.getDouble("pesoInicial"));                
+                diet.setEstado(rs.getBoolean("estado"));
+                
+               // die.setIdPaciente(pa);
+               dietas.add(diet);
                
-            } else {
-                JOptionPane.showMessageDialog(null, "No se encontre la dieta");
-
+               
             }
 
             ps.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "DietaData Sentencia SQL erronea-obtenerDietaPordni");
+            JOptionPane.showMessageDialog(null, "DietaData Sentencia SQL erronea-obtenerDietaPordni"+ex);
         }
-        return die;
+        return dietas;
 
     }
+
+//    public Dieta buscarDietaPorFecha(int dni, LocalDate inicio, LocalDate fin  ) {
+//        die = new Dieta();
+//        pa = new PacienteData();
+//        Paciente pac= new Paciente();
+//        
+//        String sql = "SELECT pa.dni,pa.apellido, pa.nombre, dt.inicio, dt.fin FROM dieta as dt INNER JOIN paciente as pa on pa.idPaciente=dt.idPaciente"
+//                + " WHERE pa.dni=? and (inicio BETWEEN ? And ? Or fin BETWEEN ? and ? );";
+//
+//        try {
+//            PreparedStatement ps = con.prepareStatement(sql);
+//            ps.setInt(1, dni);
+//            ps.setDate(2, Date.valueOf(inicio));
+//            ps.setDate(3, Date.valueOf(inicio));
+//            ps.setDate(4, Date.valueOf(fin));
+//            ps.setDate(5, Date.valueOf(fin));
+//            
+//            ResultSet rs = ps.executeQuery();
+//
+//            if (rs.next()) {
+//                
+//                die.setIdDieta(dni);
+//                die.setIdPaciente(pa.obtenerPacientePorDni(rs.getInt("dni")));
+//                
+//                die.setIdPaciente(pa);
+//                die.setInicio(rs.getDate("inicio").toLocalDate());
+//                die.setFin(rs.getDate("fin").toLocalDate());
+//               
+//            } else {
+//                JOptionPane.showMessageDialog(null, "No se encontre la dieta");
+//
+//            }
+//
+//            ps.close();
+//
+//        } catch (SQLException ex) {
+//            JOptionPane.showMessageDialog(null, "DietaData Sentencia SQL erronea-obtenerDietaPordni");
+//        }
+//        return die;
+//
+//    }
     
     
     
