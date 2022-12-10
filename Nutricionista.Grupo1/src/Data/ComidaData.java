@@ -54,6 +54,36 @@ public class ComidaData {
         }
        
     }
+ public ArrayList<Comida> obtenerTodaComida(){
+     ArrayList<Comida> listaComida= new ArrayList();
+     
+      String sql="SELECT * FROM comida ";
+        
+        try {
+            PreparedStatement ps=con.prepareStatement(sql);
+            
+            ResultSet rs=ps.executeQuery();//select
+            
+            while(rs.next()){
+            
+                Comida c=new Comida();
+                
+                c.setIdComida(rs.getInt("idComida"));
+                c.setNombre(rs.getString("nombre"));
+                c.setDetalle(rs.getString("detalle"));
+                c.setCalorias(rs.getInt("calorias"));
+                c.setEstado(rs.getBoolean("estado"));
+                
+                listaComida.add(c);
+            }
+            
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "ComidaData Sentencia SQL erronea-ObtenerComida");
+        }
+    return listaComida;
+    }
  
  
   public ArrayList<Comida> obtenerComida(){
@@ -89,7 +119,8 @@ public class ComidaData {
  
   public ArrayList<Comida> obtenerComidaPorId(int idComida) {
       ArrayList<Comida> listaComida= new ArrayList();
-        String sql= "SELECT * FROM comida WHERE estado = 1 AND idComida = ?";
+      String sql= "SELECT * FROM comida WHERE idComida = ?";
+        //String sql= "SELECT * FROM comida WHERE estado = 1 AND idComida = ?";
         
         Comida com = new Comida();
         try {
@@ -167,7 +198,8 @@ public class ComidaData {
     public ArrayList<Comida> buscaComida(String nombre) {
         ArrayList<Comida> listaComida = new ArrayList();
 
-        String sql = "SELECT * FROM comida WHERE estado = 1 and nombre LIKE ? ";
+        //String sql = "SELECT * FROM comida WHERE estado = 1 and nombre LIKE ? ";
+        String sql = "SELECT * FROM comida WHERE nombre LIKE ? ";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, "%"+nombre+"%");
@@ -180,6 +212,7 @@ public class ComidaData {
                 c.setNombre(rs.getString("nombre"));
                 c.setDetalle(rs.getString("detalle"));
                 c.setCalorias(rs.getInt("calorias"));
+                c.setEstado(rs.getBoolean("estado"));
 
                 listaComida.add(c);
             }
