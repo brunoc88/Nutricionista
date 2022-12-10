@@ -95,6 +95,11 @@ public class Comidas extends javax.swing.JInternalFrame {
         jLabel3.setText("Nombre :");
 
         jTFNombre.setEnabled(false);
+        jTFNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFNombreKeyTyped(evt);
+            }
+        });
 
         jLabel4.setText("Detalle");
 
@@ -178,10 +183,20 @@ public class Comidas extends javax.swing.JInternalFrame {
         });
 
         jTFId.setEnabled(false);
+        jTFId.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFIdKeyTyped(evt);
+            }
+        });
 
         jLabel5.setText("Calorias :");
 
         jTFCalorias.setEnabled(false);
+        jTFCalorias.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFCaloriasKeyTyped(evt);
+            }
+        });
 
         jLabel6.setText("Estado:");
 
@@ -569,6 +584,29 @@ public class Comidas extends javax.swing.JInternalFrame {
 
 
     }//GEN-LAST:event_jBEliminarActionPerformed
+
+    private void jTFCaloriasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFCaloriasKeyTyped
+      char c=evt.getKeyChar();
+      
+        if (c<'0' || c>'9') evt.consume();
+            
+        
+        
+        
+    }//GEN-LAST:event_jTFCaloriasKeyTyped
+
+    private void jTFIdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFIdKeyTyped
+       
+        char c=evt.getKeyChar();
+      
+        if (c<'0' || c>'9') evt.consume();
+    }//GEN-LAST:event_jTFIdKeyTyped
+
+    private void jTFNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFNombreKeyTyped
+       char c=evt.getKeyChar();
+      
+        if ((c<'a' || c>'z')&&(c<'A' || c>'Z')) evt.consume();
+    }//GEN-LAST:event_jTFNombreKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
