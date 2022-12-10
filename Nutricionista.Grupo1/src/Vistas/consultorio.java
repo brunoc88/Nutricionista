@@ -85,6 +85,11 @@ public class consultorio extends javax.swing.JFrame {
         jCheckBoxMenuItem3.setFont(new java.awt.Font("Segoe Script", 1, 25)); // NOI18N
         jCheckBoxMenuItem3.setSelected(true);
         jCheckBoxMenuItem3.setText("Dieta");
+        jCheckBoxMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jCheckBoxMenuItem3);
         jMenu1.add(jSeparator3);
 
@@ -142,6 +147,10 @@ public class consultorio extends javax.swing.JFrame {
     private void jCheckBoxMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBoxMenuItem6ActionPerformed
+
+    private void jCheckBoxMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem3ActionPerformed
+         
+    }//GEN-LAST:event_jCheckBoxMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
