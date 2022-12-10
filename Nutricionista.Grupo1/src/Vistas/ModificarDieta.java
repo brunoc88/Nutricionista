@@ -223,7 +223,7 @@ public class ModificarDieta extends javax.swing.JInternalFrame {
         PText.setText("");
         PText.setText("");
         LText.setText("");
-        ((JTextField) FDateChooser.getDateEditor().getUiComponent()).setText("");
+       // ((JTextField) FDateChooser.getDateEditor().getUiComponent()).setText("");
     }//GEN-LAST:event_CLimpiarActionPerformed
 
 
