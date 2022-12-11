@@ -61,6 +61,7 @@ public class Comidas extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         jTFEstado = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
+        jBSalir = new javax.swing.JButton();
 
         jMenu4.setText("jMenu4");
 
@@ -218,6 +219,13 @@ public class Comidas extends javax.swing.JInternalFrame {
 
         jLabel7.setText("Id:");
 
+        jBSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Iconos/salida.png"))); // NOI18N
+        jBSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSalirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -231,7 +239,7 @@ public class Comidas extends javax.swing.JInternalFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(337, 337, 337)
                                 .addComponent(jLabel1)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 189, Short.MAX_VALUE)
                         .addComponent(jLabel2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -242,12 +250,16 @@ public class Comidas extends javax.swing.JInternalFrame {
                                 .addComponent(jRBBorrarComida)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(193, 193, 193)
+                                .addComponent(jLabel4))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(59, 59, 59)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(193, 193, 193)
-                                        .addComponent(jLabel4))
+                                        .addComponent(jBEliminar)
+                                        .addGap(86, 86, 86)
+                                        .addComponent(jBActualizar))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(59, 59, 59)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                             .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -256,9 +268,6 @@ public class Comidas extends javax.swing.JInternalFrame {
                                                 .addComponent(jTFNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addGap(18, 18, 18)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                                .addComponent(jBActualizar)
-                                                .addGap(165, 165, 165))
                                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                                     .addComponent(jLabel5)
@@ -274,19 +283,18 @@ public class Comidas extends javax.swing.JInternalFrame {
                                                             .addGap(47, 47, 47)))
                                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addComponent(jTFEstado)
-                                                        .addComponent(jTFId)))))))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jRBBuscId)
-                                    .addComponent(jRBBuscActivas)
-                                    .addComponent(jRBBuscNombre))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                                .addComponent(jBBuscar)
-                                .addGap(27, 27, 27))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(104, 104, 104)
-                                .addComponent(jBEliminar)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                                        .addComponent(jTFId))))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGap(60, 60, 60)
+                                                .addComponent(jBSalir)))))))
+                        .addGap(65, 65, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jRBBuscId)
+                            .addComponent(jRBBuscActivas)
+                            .addComponent(jRBBuscNombre))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
+                        .addComponent(jBBuscar)
+                        .addGap(27, 27, 27)))
                 .addGap(67, 67, 67))
         );
         jPanel1Layout.setVerticalGroup(
@@ -345,7 +353,8 @@ public class Comidas extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jBCargar)
                     .addComponent(jBEliminar)
-                    .addComponent(jBActualizar))
+                    .addComponent(jBActualizar)
+                    .addComponent(jBSalir))
                 .addContainerGap(74, Short.MAX_VALUE))
         );
 
@@ -640,12 +649,18 @@ public class Comidas extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_jTFEstadoKeyTyped
 
+    private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jBSalirActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBActualizar;
     private javax.swing.JButton jBBuscar;
     private javax.swing.JButton jBCargar;
     private javax.swing.JButton jBEliminar;
+    private javax.swing.JButton jBSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
