@@ -267,11 +267,9 @@ public class DietaData {
             
             while(rs.next()){
                 Dieta diet = new Dieta();
-                Paciente papa=new Paciente();
                 diet.setIdDieta(rs.getInt("idDieta"));
-                papa.setIdPaciente(rs.getInt("idPacinete"));
-                JOptionPane.showMessageDialog(null,"loco" +papa);
-              diet.setIdPaciente(rs.getInt("idPaciente").);
+                
+             
 //                diet.setIdPaciente(pa.obtenerPacientePorId(rs.getInt("idPaciente")));
                 diet.setInicio(rs.getDate("inicio").toLocalDate());
                 diet.setFin(rs.getDate("fin").toLocalDate());
