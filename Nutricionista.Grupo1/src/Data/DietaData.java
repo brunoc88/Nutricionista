@@ -253,6 +253,34 @@ public class DietaData {
         return dietas;
 
     }
+    
+    public ArrayList<Dieta>optenerDieta(){
+         ArrayList<Dieta> dietas = new ArrayList();
+        Dieta diet = new Dieta();
+        
+        String sql = "SELECT * FROM dieta WHERE estado =1";
+        
+        try {
+            PreparedStatement ps=con.prepareStatement(sql);
+            
+            ResultSet rs=ps.executeQuery();
+            
+            while(rs.next()){
+                diet.setIdDieta(rs.getInt("idDieta"));
+                diet.setIdPaciente(pa.obtenerPacientePorId(rs.getInt("idPaciente")));
+                diet.setInicio(rs.getDate("inicio").toLocalDate());
+                diet.setFin(rs.getDate("fin").toLocalDate());
+                diet.setPesoBuscado(rs.getDouble("pesoBuscado"));
+                diet.setLimiteCalorico(rs.getInt("limiteCalorico"));
+                diet.setPesoInicial(rs.getDouble("pesoInicial"));                
+                diet.setEstado(rs.getBoolean("estado"));
+                dietas.add(diet);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"error");
+        }
+        return dietas;
+    }
 
 //    public Dieta buscarDietaPorFecha(int dni, LocalDate inicio, LocalDate fin  ) {
 //        die = new Dieta();
