@@ -134,6 +134,7 @@ public class Pacientes extends javax.swing.JInternalFrame {
 
         jLabel2.setText("DNI :");
 
+        jTFDNI.setEnabled(false);
         jTFDNI.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTFDNIKeyTyped(evt);
@@ -142,18 +143,35 @@ public class Pacientes extends javax.swing.JInternalFrame {
 
         jLabel3.setText("Apellido :");
 
+        jTFApellido.setEnabled(false);
+
         jLabel4.setText("Nombre :");
+
+        jTFNombre.setEnabled(false);
 
         jLabel5.setText("Domicilio :");
 
+        jTFomicilio.setEnabled(false);
+
         jLabel6.setText("Telefono :");
+
+        jTFTelefono.setEnabled(false);
 
         jLabel7.setText("Estado :");
 
+        jTFEstado.setEnabled(false);
+
         jLabel8.setText("ID :");
+
+        jTFID.setEnabled(false);
 
         jBActualizar.setText("Actualizar");
         jBActualizar.setEnabled(false);
+        jBActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBActualizarActionPerformed(evt);
+            }
+        });
 
         jBBuscar.setText("Buscar");
         jBBuscar.setEnabled(false);
@@ -248,7 +266,7 @@ public class Pacientes extends javax.swing.JInternalFrame {
                         .addComponent(jBActualizar)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jBBorrar)
                 .addGap(161, 161, 161)
                 .addComponent(jBBuscar)
@@ -547,7 +565,7 @@ public class Pacientes extends javax.swing.JInternalFrame {
         boolean estado = true;
 
         pacienteData.borrarPaciente(id);
-        pacienteSelec = null;
+        //  pacienteSelec = null;
         cargarPacientes();
         limpiaCampos();
 
@@ -574,13 +592,38 @@ public class Pacientes extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_jBBuscarActionPerformed
 
+
     private void jTFDNIKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFDNIKeyTyped
-       char c = evt.getKeyChar();
+        char c = evt.getKeyChar();
 
         if (c < '0' || c > '9') {
             evt.consume();
     }//GEN-LAST:event_jTFDNIKeyTyped
     }
+    private void jBActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBActualizarActionPerformed
+        // TODO add your handling code here:
+        int id = Integer.parseInt(jTFID.getText());
+        int dni = Integer.parseInt(jTFDNI.getText());
+        String apellido = jTFApellido.getText();
+        String nombre = jTFNombre.getText();
+        String domicilio = jTFomicilio.getText();
+        Long tel = Long.parseLong(jTFTelefono.getText());
+        boolean estado = Boolean.parseBoolean(jTFEstado.getText());
+
+        pacienteSelec.setIdPaciente(id);
+        pacienteSelec.setDni(dni);
+        pacienteSelec.setApellido(apellido);
+        pacienteSelec.setNombre(nombre);
+        pacienteSelec.setDomicilio(domicilio);
+        pacienteSelec.setTelefono(tel);
+        pacienteSelec.setEstado(estado);
+
+        pacienteData.actualizaPaciente(pacienteSelec);
+        pacienteSelec = null;
+        cargarTodosPacientes();
+        limpiaCampos();
+    }//GEN-LAST:event_jBActualizarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBActualizar;
@@ -670,14 +713,5 @@ public class Pacientes extends javax.swing.JInternalFrame {
 
         }
     }
-//    
-//    private void cargarPacienteDni(int busdni) {
-//        borrarFilasTabla();
-//        ArrayList<Paciente> lista = (ArrayList) pacienteData.obtenerPacientePorDni(busdni);
-//        for (Paciente pac : lista) {
-//            modelo.addRow(new Object[]{pac.getIdPaciente(), pac.getDni(), pac.getApellido(), pac.getNombre(), pac.getDomicilio(), pac.getTelefono(), pac.isEstado()});
-//
-//        }
-//    }
 
 }

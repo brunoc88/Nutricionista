@@ -123,7 +123,8 @@ public class PacienteData {
     }
     
      public Paciente obtenerPacientePorId(int idPaciente) {
-        String sql= "SELECT * FROM paciente WHERE estado = 1 AND idPaciente = ?";
+        //String sql= "SELECT * FROM paciente WHERE estado = 1 AND idPaciente = ?";
+        String sql= "SELECT * FROM paciente WHERE idPaciente = ?";
         
         Paciente pa = new Paciente();
         try {
@@ -151,8 +152,8 @@ public class PacienteData {
          
 }
      public Paciente obtenerPacientePorDni(int dni) {
-        String sql= "SELECT * FROM paciente WHERE estado = 1 AND dni = ?";
-        // String sql= "SELECT * FROM paciente WHERE dni = ?";
+        //String sql= "SELECT * FROM paciente WHERE estado = 1 AND dni = ?";
+         String sql= "SELECT * FROM paciente WHERE dni = ?";
         
         Paciente pa = new Paciente();
         try {
@@ -162,6 +163,7 @@ public class PacienteData {
             
             if(rs.next()){      
                 
+                pa.setIdPaciente(rs.getInt("idPaciente"));
                 pa.setDni(rs.getInt("dni"));
                 pa.setApellido(rs.getString("apellido"));
                 pa.setNombre(rs.getString("nombre"));
