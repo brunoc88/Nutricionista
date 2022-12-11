@@ -7,6 +7,7 @@ package Data;
 
 import Modelo.Comida;
 import Modelo.Dieta;
+import Modelo.ItemComidas;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,10 +20,10 @@ import javax.swing.JOptionPane;
  *
  * @author Bruno
  */
-public class ItemDietaData {
+public class ItemComidasData {
      private Connection con;
 
-    public ItemDietaData() {
+    public ItemComidasData() {
         this.con=data.Conexion.getConexion();
     }
     
@@ -101,6 +102,34 @@ public class ItemDietaData {
     return listaComida;
     
     }
+    
+//    public ArrayList<ItemComidas> obtener(){
+//        ArrayList<ItemComidas> lista= new ArrayList();
+//        ItemComidas it = new ItemComidas();
+//        DietaData die = new DietaData();
+//        ComidaData co = new ComidaData();
+//   
+//        String sql = "SELECT * FROM itemcomidas WHERE estado =1";
+//        
+//        try {
+//            PreparedStatement ps=con.prepareStatement(sql);
+//            ResultSet rs=ps.executeQuery();
+//            
+//            while(rs.next())
+//            {
+//                it.setIdItemComidas(rs.getInt("idItemComidas"));
+//                it.setIdDieta(die.buscarDietaPorId(rs.getInt("idDieta")));
+//                it.setIdComida(co.obtenerComidaPorId(rs.getInt("idComida")));
+//                it.setEstado(rs.getBoolean("estado"));
+//                lista.add(it);
+//            }
+//             ps.close();
+//        } catch (SQLException ex) {
+//            JOptionPane.showMessageDialog(null,"error");
+//        }
+//        return lista;
+//    }
+    
   
    public int caloriasTotal(int idDieta ){
       String sql="SELECT SUM(co.calorias)as CaloriasTotal FROM itemcomidas as ic "
