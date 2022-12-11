@@ -146,6 +146,35 @@ public class ComidaData {
        return listaComida;
          
     }
+   public Comida obtenerComidaId(int idComida) {
+      Comida comi =new Comida();
+      String sql= "SELECT * FROM comida WHERE idComida = ?";
+        //String sql= "SELECT * FROM comida WHERE estado = 1 AND idComida = ?";
+        
+        
+        try {
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.setInt(1, idComida);
+            ResultSet rs=ps.executeQuery();
+            
+            if(rs.next()){              
+                comi.setIdComida(idComida);
+                comi.setNombre(rs.getString("Nombre"));
+                comi.setDetalle(rs.getString("detalle"));
+                comi.setCalorias(rs.getInt("calorias"));
+                comi.setEstado(rs.getBoolean("estado"));
+               
+            }
+            
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "No se pudo obtener comida");
+        }
+        
+       return comi;
+         
+    }
   
   public void borrarComida (int idComida){
         String sql="UPDATE comida SET estado=0 WHERE idComida=?";

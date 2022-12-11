@@ -256,7 +256,7 @@ public class DietaData {
     
     public ArrayList<Dieta>optenerDieta(){
          ArrayList<Dieta> dietas = new ArrayList();
-        Dieta diet = new Dieta();
+        
         
         String sql = "SELECT * FROM dieta WHERE estado =1";
         
@@ -266,8 +266,13 @@ public class DietaData {
             ResultSet rs=ps.executeQuery();
             
             while(rs.next()){
+                Dieta diet = new Dieta();
+                Paciente papa=new Paciente();
                 diet.setIdDieta(rs.getInt("idDieta"));
-                diet.setIdPaciente(pa.obtenerPacientePorId(rs.getInt("idPaciente")));
+                papa.setIdPaciente(rs.getInt("idPacinete"));
+                JOptionPane.showMessageDialog(null,"loco" +papa);
+              diet.setIdPaciente(rs.getInt("idPaciente").);
+//                diet.setIdPaciente(pa.obtenerPacientePorId(rs.getInt("idPaciente")));
                 diet.setInicio(rs.getDate("inicio").toLocalDate());
                 diet.setFin(rs.getDate("fin").toLocalDate());
                 diet.setPesoBuscado(rs.getDouble("pesoBuscado"));
@@ -276,8 +281,9 @@ public class DietaData {
                 diet.setEstado(rs.getBoolean("estado"));
                 dietas.add(diet);
             }
+            ps.close();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null,"error");
+            JOptionPane.showMessageDialog(null,"error"+e);
         }
         return dietas;
     }

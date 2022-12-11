@@ -23,18 +23,21 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ItemComidasV extends javax.swing.JInternalFrame {
 
-   
     private DietaData die;
     private ComidaData com;
     private Dieta dieta;
     private Comida comidaSelect;
     private ItemComidasData it;
     private DefaultTableModel modelo;
-    
+
     public ItemComidasV() {
         initComponents();
+        it = new ItemComidasData();
+        die = new DietaData();
+        com = new ComidaData();
         modelo = new DefaultTableModel();
         armarCabecera1();
+        //armarCabecera2();
     }
 
     /**
@@ -61,6 +64,9 @@ public class ItemComidasV extends javax.swing.JInternalFrame {
         jbCargar = new javax.swing.JButton();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
+
+        setClosable(true);
+        setMaximizable(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 204, 153));
 
@@ -158,7 +164,7 @@ public class ItemComidasV extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 383, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jRadioButton2)
                     .addComponent(jRadioButton1)
@@ -171,24 +177,23 @@ public class ItemComidasV extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addGap(117, 117, 117)
-                                            .addComponent(jLabel1))
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addGap(2, 2, 2)
-                                            .addComponent(jLabel2)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 586, Short.MAX_VALUE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jbCargar)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jButton1)
-                                    .addGap(18, 18, 18)))
-                            .addComponent(jButton2)
+                                    .addGap(117, 117, 117)
+                                    .addComponent(jLabel1))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(2, 2, 2)
+                                    .addComponent(jLabel2)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGap(46, 46, 46)))
                     .addComponent(jbSelectGuardar)))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(226, 226, 226)
+                .addComponent(jbCargar)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addGap(18, 18, 18)
+                .addComponent(jButton2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -207,15 +212,16 @@ public class ItemComidasV extends javax.swing.JInternalFrame {
                 .addComponent(jRadioButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jRadioButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel2))
                     .addComponent(jButton2)
                     .addComponent(jbCargar))
-                .addGap(125, 125, 125))
+                .addGap(70, 70, 70))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -227,8 +233,9 @@ public class ItemComidasV extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -239,28 +246,27 @@ public class ItemComidasV extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbSelectEliminarActionPerformed
 
     private void jbSelectGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSelectGuardarActionPerformed
-       armarCabecera1();
-       armarCabecera2();
-       llenarTabla1();
-       llenarTabla2();
+
+        llenarTabla1();
+        //llenarTabla2();
     }//GEN-LAST:event_jbSelectGuardarActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         if (jbSelectGuardar.isSelected()) {
             int select = jTable1.getSelectedRow();
-            if (select !=1) {
+            if (select != 1) {
                 int idDieta = (Integer) jTable1.getValueAt(select, 0);
                 int idPaciente = (Integer) jTable1.getValueAt(select, 1);
-                LocalDate inicio = (LocalDate)jTable1.getValueAt(select, 2);
-                LocalDate fin = (LocalDate)jTable1.getValueAt(select, 3);
-                double pesoBuscado = (Double)jTable1.getValueAt(select, 4);
+                LocalDate inicio = (LocalDate) jTable1.getValueAt(select, 2);
+                LocalDate fin = (LocalDate) jTable1.getValueAt(select, 3);
+                double pesoBuscado = (Double) jTable1.getValueAt(select, 4);
                 int liminteCalorico = (Integer) jTable1.getValueAt(select, 5);
-                double pesoInicial = (Double)jTable1.getValueAt(select, 6);
+                double pesoInicial = (Double) jTable1.getValueAt(select, 6);
                 boolean estado = (Boolean) jTable1.getValueAt(select, 7);
-                
+
                 dieta = new Dieta();
                 dieta.setIdDieta(idDieta);
-                dieta.setIdPaciente(idPaciente);
+                //dieta.setIdPaciente(idPaciente);
                 dieta.setInicio(inicio);
                 dieta.setFin(fin);
                 dieta.setPesoBuscado(pesoBuscado);
@@ -274,13 +280,13 @@ public class ItemComidasV extends javax.swing.JInternalFrame {
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
         if (jbSelectGuardar.isSelected()) {
             int select = jTable2.getSelectedRow();
-            if (select !=1) {
-                 int idcomida = (Integer) jTable2.getValueAt(select, 0);
+            if (select != 1) {
+                int idcomida = (Integer) jTable2.getValueAt(select, 0);
                 String nombre = (String) jTable2.getValueAt(select, 1);
                 String detalle = (String) jTable2.getValueAt(select, 2);
                 int calorias = (Integer) jTable2.getValueAt(select, 3);
                 boolean estado = (boolean) jTable2.getValueAt(select, 4);
-                
+
                 comidaSelect = new Comida();
                 comidaSelect.setIdComida(idcomida);
                 comidaSelect.setNombre(nombre);
@@ -295,14 +301,14 @@ public class ItemComidasV extends javax.swing.JInternalFrame {
         int tabla1 = jTable1.getSelectedRow();
         int tabla2 = jTable2.getSelectedRow();
         if (jbSelectGuardar.isSelected()) {
-            if (tabla1 !=1 && tabla2 !=1) {
+            if (tabla1 != 1 && tabla2 != 1) {
                 it = new ItemComidasData();
                 it.GuardarComidaDieta(dieta, comidaSelect);
             }
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, "Error");
         }
-        
+
     }//GEN-LAST:event_jbCargarActionPerformed
 
 
@@ -324,9 +330,9 @@ public class ItemComidasV extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton jbSelectGuardar;
     // End of variables declaration//GEN-END:variables
 
-    public void armarCabecera1(){
-        
-        ArrayList <Object> columnas = new ArrayList();
+    public void armarCabecera1() {
+
+        ArrayList<Object> columnas = new ArrayList<Object>();
         columnas.add("idDieta");
         columnas.add("idPaciente");
         columnas.add("Inicio");
@@ -336,35 +342,34 @@ public class ItemComidasV extends javax.swing.JInternalFrame {
         columnas.add("Peso Inicial");
         columnas.add("Estado");
         
-        for (Object it : columnas) {
-            modelo.addColumn(it);
+        for (Object columna : columnas) {
+            modelo.addColumn(columna);
         }
-        
         jTable1.setModel(modelo);
-        
+
     }
 
-    
-    public void armarCabecera2(){
-        
-        ArrayList <Object> columnas = new ArrayList();
-        columnas.add("idDieta");
-        columnas.add("idPaciente");
-        columnas.add("Inicio");
-        columnas.add("Fin");
-        columnas.add("Peso buscado");
-        columnas.add("Limite Calorico");
-        columnas.add("Peso Inicial");
-        columnas.add("Estado");
-        
-        for (Object it : columnas) {
-            modelo.addColumn(it);
-        }
-        
-        jTable1.setModel(modelo);
-        
-    }
-     private void borrarFilasTabla() {
+//    
+//    public void armarCabecera2(){
+//        
+//        ArrayList <Object> columnas = new ArrayList();
+//        columnas.add("idDieta");
+//        columnas.add("idPaciente");
+//        columnas.add("Inicio");
+//        columnas.add("Fin");
+//        columnas.add("Peso buscado");
+//        columnas.add("Limite Calorico");
+//        columnas.add("Peso Inicial");
+//        columnas.add("Estado");
+//        
+//        for (Object die : columnas) {
+//            modelo.addColumn(die);
+//        }
+//        
+//        jTable2.setModel(modelo);
+//        
+//    }
+    private void borrarFilasTabla() {
         if (modelo != null) {
             int a = modelo.getRowCount() - 1;
 
@@ -374,7 +379,7 @@ public class ItemComidasV extends javax.swing.JInternalFrame {
         }
 
     }
-     
+
 //     public void llenarTabla(){
 //         borrarFilasTabla();
 //         ArrayList <ItemComidas> lista = (ArrayList) itemComidas.obtener();
@@ -384,24 +389,23 @@ public class ItemComidasV extends javax.swing.JInternalFrame {
 //         }
 //         
 //     }
-     
-     public void llenarTabla1(){
-         borrarFilasTabla();
-         ArrayList<Dieta>dieta = (ArrayList) die.optenerDieta();
-         
-         for (Dieta di : dieta) {
-             modelo.addRow(new Object[]{di.getIdDieta(),di.getIdPaciente(),di.getInicio(),di.getFin(),di.getPesoBuscado(),di.getLimiteCalorico(),di.getPesoInicial(),di.isEstado()});
-         }
-     }
-     
-     public void llenarTabla2(){
-      borrarFilasTabla();
-         ArrayList<Comida>list = (ArrayList) com.obtenerComida();
-         
-         for (Comida com : list) {
-          modelo.addRow(new Object[]{com.getIdComida(), com.getNombre(), com.getDetalle(), com.getCalorias(), com.isEstado()});
-         }
-     
-     }
-}
+    public void llenarTabla1() {
+        borrarFilasTabla();
 
+        ArrayList<Dieta> lista = (ArrayList) die.optenerDieta();
+
+        for (Dieta di : lista) {
+            modelo.addRow(new Object[]{di.getIdDieta(), di.getIdPaciente(), di.getInicio(), di.getFin(), di.getPesoBuscado(), di.getLimiteCalorico(), di.getPesoInicial(), di.isEstado()});
+        }
+    }
+//     
+//     public void llenarTabla2(){
+//      borrarFilasTabla();
+//         ArrayList<Comida>list = (ArrayList) com.obtenerComida();
+//         
+//         for (Comida com : list) {
+//          modelo.addRow(new Object[]{com.getIdComida(), com.getNombre(), com.getDetalle(), com.getCalorias(), com.isEstado()});
+//         }
+//     
+//     }
+}

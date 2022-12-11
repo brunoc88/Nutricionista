@@ -27,11 +27,10 @@ public class ItemComidasData {
         this.con=data.Conexion.getConexion();
     }
     
-    
-    
   public void GuardarComidaDieta(Dieta d, Comida c){
       
-        String sql="INSERT INTO itemcomidas (idDieta,idComida) VALUES (?,?)";
+        //String sql="INSERT INTO itemcomidas (idDieta,idComida) VALUES (?,?)";
+        String sql="INSERT INTO itemcomidas (`idDieta`, `idComida`,`estado`) VALUES (?,?,1)";
         try{
             PreparedStatement ps=con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, d.getIdDieta());
@@ -72,6 +71,26 @@ public class ItemComidasData {
             JOptionPane.showMessageDialog(null, "Error, no se pudo borrar la comida de la dieta");
         }
 }
+  
+  //borrado logico de la dieta
+  public void borradoLogComidaDieta(int idItemComidas)
+  {
+      String sql="UPDATE `itemcomidas` SET `estado`='0' WHERE idItemComidas=?";
+      try {
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.setInt(1,idItemComidas);
+            ps.executeUpdate();//
+            
+            JOptionPane.showMessageDialog(null, "Se Cambio de estado correctamente");
+            
+            ps.close();
+            
+    }   catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "item Comidas  Sentencia SQL erronea-borrar logico dieta"+ex.getMessage());
+        }
+      
+  
+  }
     public ArrayList<Comida> obtenerComidaPorDieta( int idDieta){
      ArrayList<Comida> listaComida= new ArrayList();
       String sql="SELECT * FROM itemcomidas, comida WHERE itemcomidas.idComida= comida.idComida and itemcomidas.idDieta=?";

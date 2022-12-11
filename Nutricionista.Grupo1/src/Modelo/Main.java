@@ -7,6 +7,7 @@ package Modelo;
 
 import Data.ComidaData;
 import Data.DietaData;
+import Data.ItemComidasData;
 import Data.PacienteData;
 import data.Conexion;
 import java.sql.Connection;
@@ -15,10 +16,7 @@ import java.time.Month;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/**
- *
- * @author Bruno
- */
+
 public class Main {
 
     
@@ -85,7 +83,7 @@ public class Main {
         
         // ArrayList<Comida> listaComida= comp.buscaComida("ar");
         // System.out.println(listaComida);
-    }
+    
     
 //------------------------PRUEBA DIETA DATA------------------------//
     
@@ -95,13 +93,26 @@ public class Main {
     //dieta.guardarDieta(die);
     
     
-      
+      //------------------------PRUEBA ITEM COMIDA ------------------------//
+    
+    ItemComidasData ite = new ItemComidasData();
+    DietaData dit =new DietaData();
+    ComidaData com =new ComidaData();
     
     
+    ItemComidas icom =new ItemComidas();
+    
+        System.out.println(dit.optenerDieta());
+    
+    //ite.GuardarComidaDieta(dit.buscarDietaPorId(2),com.obtenerComidaId(5));
+    //ite.borradoLogComidaDieta(4);
+    //ite.eliminarComidaDieta(4);
+       // System.out.println(ite.obtenerComidaPorDieta(2));
+        //System.out.println(ite.caloriasTotal(2));
+   //no puedo intanciar las clases
+            }
     
     
-    
-//---------------------PRUEBA ITEMCOMIDAS DATA------------------//
     
     
     
