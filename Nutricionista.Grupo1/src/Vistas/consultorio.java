@@ -6,6 +6,7 @@
 package Vistas;
 
 import Data.ComidaData;
+import Data.PacienteData;
 
 /**
  *
@@ -13,6 +14,7 @@ import Data.ComidaData;
  */
 public class consultorio extends javax.swing.JFrame {
     private ComidaData comidaData;
+    private PacienteData pacienteData;
 
 
     public consultorio() {
@@ -40,7 +42,7 @@ public class consultorio extends javax.swing.JFrame {
         jSeparator3 = new javax.swing.JPopupMenu.Separator();
         jCheckBoxMenuItem4 = new javax.swing.JCheckBoxMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
-        jCheckBoxMenuItem6 = new javax.swing.JCheckBoxMenuItem();
+        jCheckBoxPaciente = new javax.swing.JCheckBoxMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         jCheckBoxMenuItem2.setSelected(true);
@@ -102,15 +104,15 @@ public class consultorio extends javax.swing.JFrame {
         jMenu1.add(jCheckBoxMenuItem4);
         jMenu1.add(jSeparator1);
 
-        jCheckBoxMenuItem6.setFont(new java.awt.Font("Segoe Script", 1, 25)); // NOI18N
-        jCheckBoxMenuItem6.setSelected(true);
-        jCheckBoxMenuItem6.setText("Paciente");
-        jCheckBoxMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+        jCheckBoxPaciente.setFont(new java.awt.Font("Segoe Script", 1, 25)); // NOI18N
+        jCheckBoxPaciente.setSelected(true);
+        jCheckBoxPaciente.setText("Paciente");
+        jCheckBoxPaciente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxMenuItem6ActionPerformed(evt);
+                jCheckBoxPacienteActionPerformed(evt);
             }
         });
-        jMenu1.add(jCheckBoxMenuItem6);
+        jMenu1.add(jCheckBoxPaciente);
 
         jMenuBar1.add(jMenu1);
 
@@ -141,9 +143,13 @@ public class consultorio extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBoxMenuItem4ActionPerformed
 
-    private void jCheckBoxMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBoxMenuItem6ActionPerformed
+    private void jCheckBoxPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxPacienteActionPerformed
+       Pacientes pas=new Pacientes();
+       pas.setVisible(true);
+       escritorio.add(pas);
+       escritorio.repaint();
+       
+    }//GEN-LAST:event_jCheckBoxPacienteActionPerformed
 
     private void jCheckBoxMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem1ActionPerformed
         Comidas comi=new Comidas();
@@ -196,7 +202,7 @@ public class consultorio extends javax.swing.JFrame {
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem3;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem4;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem5;
-    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem6;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxPaciente;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;

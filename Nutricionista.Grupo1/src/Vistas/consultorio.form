@@ -76,7 +76,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator1">
             </MenuItem>
-            <MenuItem class="javax.swing.JCheckBoxMenuItem" name="jCheckBoxMenuItem6">
+            <MenuItem class="javax.swing.JCheckBoxMenuItem" name="jCheckBoxPaciente">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe Script" size="25" style="1"/>
@@ -85,7 +85,7 @@
                 <Property name="text" type="java.lang.String" value="Paciente"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBoxMenuItem6ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBoxPacienteActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>

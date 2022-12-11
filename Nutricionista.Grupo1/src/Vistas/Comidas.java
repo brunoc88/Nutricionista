@@ -680,7 +680,7 @@ public class Comidas extends javax.swing.JInternalFrame {
         for (Comida com : lista) {
 
             modelo.addRow(new Object[]{com.getIdComida(), com.getNombre(), com.getDetalle(), com.getCalorias(), com.isEstado()});
-// no me trae el nombre de la comida
+
 
         }
     }

@@ -89,6 +89,39 @@ public class PacienteData {
     return listaTemp;
     }
     
+    public ArrayList<Paciente> obtenerTodosLosPaciente(){
+     ArrayList<Paciente> listaTemp= new ArrayList();
+     
+      String sql="SELECT * FROM `paciente` ";
+        
+        try {
+            PreparedStatement ps=con.prepareStatement(sql);
+            
+            ResultSet rs=ps.executeQuery();
+            
+            while(rs.next()){
+            
+                Paciente p=new Paciente();
+                
+                p.setIdPaciente(rs.getInt("idPaciente"));
+                p.setDni(rs.getInt("dni"));
+                p.setApellido(rs.getString("apellido"));
+                p.setNombre(rs.getString("nombre"));
+                p.setDomicilio(rs.getString("domicilio"));
+                p.setTelefono(rs.getLong("telefono"));
+                p.setEstado(rs.getBoolean("estado"));
+                
+                listaTemp.add(p);
+            }
+            
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "PacienteData Sentencia SQL erronea-ObtenerPacientes");
+        }
+    return listaTemp;
+    }
+    
      public Paciente obtenerPacientePorId(int idPaciente) {
         String sql= "SELECT * FROM paciente WHERE estado = 1 AND idPaciente = ?";
         
@@ -119,6 +152,7 @@ public class PacienteData {
 }
      public Paciente obtenerPacientePorDni(int dni) {
         String sql= "SELECT * FROM paciente WHERE estado = 1 AND dni = ?";
+        // String sql= "SELECT * FROM paciente WHERE dni = ?";
         
         Paciente pa = new Paciente();
         try {
@@ -126,13 +160,15 @@ public class PacienteData {
             ps.setInt(1, dni);
             ResultSet rs=ps.executeQuery();
             
-            if(rs.next()){              
+            if(rs.next()){      
+                
                 pa.setDni(rs.getInt("dni"));
                 pa.setApellido(rs.getString("apellido"));
                 pa.setNombre(rs.getString("nombre"));
                 pa.setDomicilio(rs.getString("domicilio"));
                 pa.setTelefono(rs.getLong("telefono"));
                 pa.setEstado(rs.getBoolean("estado"));
+               
                 
             }
             
