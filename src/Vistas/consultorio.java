@@ -118,6 +118,16 @@ public class consultorio extends javax.swing.JFrame {
 
         jMenu2.setText("Salir");
         jMenu2.setFont(new java.awt.Font("Segoe Script", 1, 30)); // NOI18N
+        jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu2MouseClicked(evt);
+            }
+        });
+        jMenu2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu2ActionPerformed(evt);
+            }
+        });
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -140,13 +150,17 @@ public class consultorio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jCheckBoxMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem4ActionPerformed
-       ItemComidasV item=new ItemComidasV();
-       item.setVisible(true);
-       escritorio.add(item);
-       escritorio.repaint();
+        escritorio.removeAll();
+        escritorio.repaint();
+        ItemComidasV item=new ItemComidasV();
+        item.setVisible(true);
+        escritorio.add(item);
+        escritorio.repaint();
     }//GEN-LAST:event_jCheckBoxMenuItem4ActionPerformed
 
     private void jCheckBoxPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxPacienteActionPerformed
+       escritorio.removeAll();
+       escritorio.repaint();
        Pacientes pas=new Pacientes();
        pas.setVisible(true);
        escritorio.add(pas);
@@ -155,6 +169,8 @@ public class consultorio extends javax.swing.JFrame {
     }//GEN-LAST:event_jCheckBoxPacienteActionPerformed
 
     private void jCheckBoxMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem1ActionPerformed
+        escritorio.removeAll();
+       escritorio.repaint();
         Comidas comi=new Comidas();
         comi.setVisible(true);
         escritorio.add(comi);
@@ -177,6 +193,15 @@ public class consultorio extends javax.swing.JFrame {
 
                
     }//GEN-LAST:event_jCheckBoxMenuItem6ActionPerformed
+
+    private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
+        dispose();
+    }//GEN-LAST:event_jMenu2ActionPerformed
+
+    private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jMenu2MouseClicked
 
     /**
      * @param args the command line arguments

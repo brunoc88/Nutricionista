@@ -668,7 +668,6 @@ public class ItemComidasV extends javax.swing.JInternalFrame {
 
         ArrayList<Object> columnas = new ArrayList<Object>();
         columnas.add("idDieta");
-        columnas.add("idPaciente");
         columnas.add("Inicio");
         columnas.add("Fin");
         columnas.add("Peso buscado");
@@ -741,7 +740,7 @@ public class ItemComidasV extends javax.swing.JInternalFrame {
         ArrayList<Dieta> lista = (ArrayList) die.optenerDieta();
 
         for (Dieta di : lista) {
-            modelo.addRow(new Object[]{di.getIdDieta(), di.getIdPaciente(), di.getInicio(), di.getFin(), di.getPesoBuscado(), di.getLimiteCalorico(), di.getPesoInicial(), di.isEstado()});
+            modelo.addRow(new Object[]{di.getIdDieta(), di.getInicio(), di.getFin(), di.getPesoBuscado(), di.getLimiteCalorico(), di.getPesoInicial(), di.isEstado()});
         }
     }
      

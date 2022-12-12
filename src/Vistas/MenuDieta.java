@@ -347,7 +347,7 @@ public class MenuDieta extends javax.swing.JInternalFrame {
     
     dieda.GuardarDieta(d);
     cargarTabla();
-    guardarModicar.setEnabled(false);
+   // guardarModicar.setEnabled(false);
     }//GEN-LAST:event_guardarModicarActionPerformed
 
     private void modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarActionPerformed
@@ -370,7 +370,7 @@ public class MenuDieta extends javax.swing.JInternalFrame {
         int filaSeleccionada = gDieta1.getSelectedRow();
         dieda.eliminarDieta((int) gDieta1.getValueAt(filaSeleccionada, 0));
         cargarTabla();
-        eliminar.setVisible(false);
+      //  eliminar.setVisible(false);
     }//GEN-LAST:event_eliminarActionPerformed
 
     private void jTextlimiteCaloricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextlimiteCaloricoActionPerformed

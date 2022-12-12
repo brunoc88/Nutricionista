@@ -113,8 +113,10 @@ public class Dieta {
 
     @Override
     public String toString() {
-        return "Dieta{" + "idDieta=" + idDieta + ", idPaciente=" + idPaciente + ", Inicio=" + Inicio + ", fin=" + fin + '}';
+        return  "" + idDieta;
     }
+
+   
 
     
     
