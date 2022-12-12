@@ -328,7 +328,36 @@ public class DietaData {
 //    }
     
     
-    
+        public ArrayList<Dieta>obtenerDietaPorPaciente(Paciente pac){
+         ArrayList<Dieta> dietas = new ArrayList();
+         pa= new PacienteData();
+         Dieta diet = new Dieta();
+        String sql = "select * from dieta where idPaciente = ? order by inicio Desc";
+        
+        try {
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.setInt(1,pac.getIdPaciente());
+            ResultSet rs=ps.executeQuery();
+            
+            while(rs.next()){
+                diet = new Dieta();
+                
+                diet.setIdDieta(rs.getInt("idDieta"));
+                diet.setIdPaciente(pa.obtenerPacientePorId(rs.getInt("idPaciente")));
+                diet.setInicio(rs.getDate("inicio").toLocalDate());
+                diet.setFin(rs.getDate("fin").toLocalDate());
+                diet.setPesoBuscado(rs.getDouble("pesoBuscado"));
+                diet.setLimiteCalorico(rs.getInt("limiteCalorico"));
+                diet.setPesoInicial(rs.getDouble("pesoInicial"));                
+                diet.setEstado(rs.getBoolean("estado"));
+                dietas.add(diet);
+            }
+            ps.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"error"+e);
+        }
+        return dietas;
+    }
     
     
     

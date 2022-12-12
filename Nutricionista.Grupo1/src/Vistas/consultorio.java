@@ -6,7 +6,9 @@
 package Vistas;
 
 import Data.ComidaData;
+import Data.DietaData;
 import Data.PacienteData;
+import Modelo.Dieta;
 
 /**
  *
@@ -15,7 +17,7 @@ import Data.PacienteData;
 public class consultorio extends javax.swing.JFrame {
     private ComidaData comidaData;
     private PacienteData pacienteData;
-
+    private DietaData dietaData;
 
     public consultorio() {
         initComponents();
@@ -37,12 +39,11 @@ public class consultorio extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
-        jSeparator2 = new javax.swing.JPopupMenu.Separator();
-        jCheckBoxMenuItem3 = new javax.swing.JCheckBoxMenuItem();
-        jSeparator3 = new javax.swing.JPopupMenu.Separator();
+        jCheckBoxMenuItem6 = new javax.swing.JCheckBoxMenuItem();
         jCheckBoxMenuItem4 = new javax.swing.JCheckBoxMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jCheckBoxPaciente = new javax.swing.JCheckBoxMenuItem();
+        jCheckBoxMenuItem3 = new javax.swing.JCheckBoxMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         jCheckBoxMenuItem2.setSelected(true);
@@ -80,18 +81,16 @@ public class consultorio extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jCheckBoxMenuItem1);
-        jMenu1.add(jSeparator2);
 
-        jCheckBoxMenuItem3.setFont(new java.awt.Font("Segoe Script", 1, 25)); // NOI18N
-        jCheckBoxMenuItem3.setSelected(true);
-        jCheckBoxMenuItem3.setText("Dieta");
-        jCheckBoxMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        jCheckBoxMenuItem6.setFont(new java.awt.Font("Segoe Script", 1, 25)); // NOI18N
+        jCheckBoxMenuItem6.setSelected(true);
+        jCheckBoxMenuItem6.setText("Dieta");
+        jCheckBoxMenuItem6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxMenuItem3ActionPerformed(evt);
+                jCheckBoxMenuItem6ActionPerformed(evt);
             }
         });
-        jMenu1.add(jCheckBoxMenuItem3);
-        jMenu1.add(jSeparator3);
+        jMenu1.add(jCheckBoxMenuItem6);
 
         jCheckBoxMenuItem4.setFont(new java.awt.Font("Segoe Script", 1, 25)); // NOI18N
         jCheckBoxMenuItem4.setSelected(true);
@@ -113,6 +112,15 @@ public class consultorio extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jCheckBoxPaciente);
+
+        jCheckBoxMenuItem3.setSelected(true);
+        jCheckBoxMenuItem3.setText("m");
+        jCheckBoxMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jCheckBoxMenuItem3);
 
         jMenuBar1.add(jMenu1);
 
@@ -163,6 +171,22 @@ public class consultorio extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jCheckBoxMenuItem1ActionPerformed
 
+    private void jCheckBoxMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem6ActionPerformed
+       DietasMenu d= new DietasMenu();
+       d.setVisible(true);
+       escritorio.add(d);
+       escritorio.repaint();
+       
+               
+    }//GEN-LAST:event_jCheckBoxMenuItem6ActionPerformed
+
+    private void jCheckBoxMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem3ActionPerformed
+       DietasMenu dm = new DietasMenu();
+       dm.setVisible(true);
+       escritorio.add(dm);
+       escritorio.repaint();
+    }//GEN-LAST:event_jCheckBoxMenuItem3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -205,13 +229,12 @@ public class consultorio extends javax.swing.JFrame {
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem3;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem4;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem5;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem6;
     private javax.swing.JCheckBoxMenuItem jCheckBoxPaciente;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
-    private javax.swing.JPopupMenu.Separator jSeparator2;
-    private javax.swing.JPopupMenu.Separator jSeparator3;
     // End of variables declaration//GEN-END:variables
 
     
