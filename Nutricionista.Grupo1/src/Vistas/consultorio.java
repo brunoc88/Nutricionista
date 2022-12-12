@@ -43,7 +43,6 @@ public class consultorio extends javax.swing.JFrame {
         jCheckBoxMenuItem4 = new javax.swing.JCheckBoxMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jCheckBoxPaciente = new javax.swing.JCheckBoxMenuItem();
-        jCheckBoxMenuItem3 = new javax.swing.JCheckBoxMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         jCheckBoxMenuItem2.setSelected(true);
@@ -115,15 +114,6 @@ public class consultorio extends javax.swing.JFrame {
         });
         jMenu1.add(jCheckBoxPaciente);
 
-        jCheckBoxMenuItem3.setSelected(true);
-        jCheckBoxMenuItem3.setText("m");
-        jCheckBoxMenuItem3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxMenuItem3ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jCheckBoxMenuItem3);
-
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Salir");
@@ -174,20 +164,19 @@ public class consultorio extends javax.swing.JFrame {
     }//GEN-LAST:event_jCheckBoxMenuItem1ActionPerformed
 
     private void jCheckBoxMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem6ActionPerformed
-       DietasMenu d= new DietasMenu();
-       d.setVisible(true);
-       escritorio.add(d);
+      // MenuDieta dm = new MenuDieta();
+       //dm.setVisible(true);
+       //escritorio.add(dm);
+       //escritorio.repaint();
+       escritorio.removeAll();
        escritorio.repaint();
-       
+       MenuDieta R = new MenuDieta();
+       R.setVisible(true);
+       escritorio.add(R);
+      // escritorio.moveToFront(R);
+
                
     }//GEN-LAST:event_jCheckBoxMenuItem6ActionPerformed
-
-    private void jCheckBoxMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem3ActionPerformed
-       DietasMenu dm = new DietasMenu();
-       dm.setVisible(true);
-       escritorio.add(dm);
-       escritorio.repaint();
-    }//GEN-LAST:event_jCheckBoxMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -228,7 +217,6 @@ public class consultorio extends javax.swing.JFrame {
     private javax.swing.JPanel escritorio;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem2;
-    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem3;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem4;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem5;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem6;

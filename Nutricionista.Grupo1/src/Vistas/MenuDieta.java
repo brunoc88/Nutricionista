@@ -28,7 +28,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Ana luz
  */
-public class DietasMenu extends javax.swing.JInternalFrame {
+public class MenuDieta extends javax.swing.JInternalFrame {
 
         private ArrayList <Paciente> listadoPaciente;
         private ArrayList <Comida> listadocomida;
@@ -44,14 +44,15 @@ public class DietasMenu extends javax.swing.JInternalFrame {
     
     
     
+    DefaultTableModel modelo;
+
+    //DefaultTableModel modelo = (DefaultTableModel)  this.gDieta1.getModel(); 
     
-    
-    
-    public DietasMenu() {
+    public MenuDieta() {
         initComponents();
+        armarDieta();
         
-        
-        
+       
        listadoPaciente= pasdata.obtenerPaciente();
        for (Paciente paciente : listadoPaciente ){
            this.combopacientes.addItem(paciente);
@@ -88,6 +89,7 @@ public class DietasMenu extends javax.swing.JInternalFrame {
         eliminar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         gDieta1 = new javax.swing.JTable();
+        jLabel8 = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
@@ -95,7 +97,6 @@ public class DietasMenu extends javax.swing.JInternalFrame {
         jLabel1.setText("Paciente ");
 
         combopacientes.setFont(new java.awt.Font("Segoe Script", 1, 18)); // NOI18N
-        combopacientes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         combopacientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 combopacientesActionPerformed(evt);
@@ -262,19 +263,15 @@ public class DietasMenu extends javax.swing.JInternalFrame {
         ));
         jScrollPane2.setViewportView(gDieta1);
 
+        jLabel8.setFont(new java.awt.Font("Segoe Script", 1, 30)); // NOI18N
+        jLabel8.setText("Buscar Dieta por Fechas determinadas");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(guardarDieta)
-                        .addGap(86, 86, 86)
-                        .addComponent(modificar)
-                        .addGap(70, 70, 70)
-                        .addComponent(eliminar))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(263, 263, 263)
                         .addComponent(jLabel1))
@@ -283,12 +280,22 @@ public class DietasMenu extends javax.swing.JInternalFrame {
                         .addComponent(jButton1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(154, 154, 154)
-                        .addComponent(combopacientes, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(combopacientes, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel8)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(guardarDieta)
+                                .addGap(86, 86, 86)
+                                .addComponent(modificar)))
+                        .addGap(70, 70, 70)
+                        .addComponent(eliminar)))
                 .addGap(36, 36, 36)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(panelModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addContainerGap(485, Short.MAX_VALUE))
+                .addContainerGap(323, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(25, 25, 25)
@@ -316,7 +323,9 @@ public class DietasMenu extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(49, 49, 49)
                         .addComponent(panelModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(596, Short.MAX_VALUE))
+                .addGap(100, 100, 100)
+                .addComponent(jLabel8)
+                .addContainerGap(451, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(258, 258, 258)
@@ -339,7 +348,7 @@ public class DietasMenu extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       armarDieta();
+      // armarDieta();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void combopacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combopacientesActionPerformed
@@ -368,10 +377,19 @@ public class DietasMenu extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_guardarDietaActionPerformed
 
     private void guardarModicarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarModicarActionPerformed
-        die = new Dieta();
-        die.setInicio(LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(this.jTextinicio.getDate())));
-        this.jTextfechaFinal.setText(LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(this.jTextinicio.getDate())).plusDays(7));
-        
+       die = new Dieta();
+       die.setInicio(LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(this.jTextinicio.getDate())));
+       this.jTextfechaFinal.setText(LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(this.jTextinicio.getDate())).plusDays(7).toString());
+       die.setInicio(LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(this.jTextinicio.getDate())));
+       DateTimeFormatter formatter =DateTimeFormatter.ofPattern("yyyy-MM-dd");
+       LocalDate date=LocalDate.parse(this.jTextfechaFinal.getText(), formatter);
+       die.setFin(date);
+       
+       
+       
+       
+       
+       
     }//GEN-LAST:event_guardarModicarActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -420,10 +438,24 @@ public class DietasMenu extends javax.swing.JInternalFrame {
     
     
     private void armarDieta(){
-        ArrayList <Dieta> dieta = new ArrayList();
+       
+        //titulos de las columnas
+        ArrayList<Object> columnas = new ArrayList<Object>();
+        columnas.add("ID");
+        columnas.add("Nombre");
+        columnas.add("Detalle");
+        columnas.add("Calorias");
+        columnas.add("Estado");
+        for (Object it : columnas) {
+            modelo.addColumn(it);
+        }
+        
+        gDieta1.setModel(modelo);
+
+     /*   ArrayList <Dieta> dieta = new ArrayList();
         dieta= dieda.obtenerDietaPorPaciente(pa);
         String datos[] = new String [6];
-        DefaultTableModel modelo = (DefaultTableModel)  this.gComida.getModel();
+        DefaultTableModel modelo = (DefaultTableModel)  this.gDieta1.getModel();
         modelo.setNumRows(0);
         for (Dieta dies : dieta){
             datos[0] = dies.getIdDieta() + "";
@@ -434,7 +466,7 @@ public class DietasMenu extends javax.swing.JInternalFrame {
             datos[5]= dies.getLimiteCalorico() +"";
             modelo.addRow(datos);
         }
-        
+        */
         
         
     }
@@ -455,6 +487,7 @@ public class DietasMenu extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextfechaFinal;
