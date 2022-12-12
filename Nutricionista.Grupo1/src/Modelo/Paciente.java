@@ -123,10 +123,13 @@ public class Paciente {
         return true;
     }
 
+    
+
     @Override
     public String toString() {
-        return "Paciente{" + "idPaciente=" + idPaciente + ", dni=" + dni + ", apellido=" + apellido + ", nombre=" + nombre + '}';
+        return  apellido +" "+ nombre ;
     }
+   
 
    
     

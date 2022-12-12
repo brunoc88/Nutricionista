@@ -35,7 +35,7 @@ public class DietaData {
     }
 
     public void GuardarDieta(Dieta die) {
-        String sql = "INSERT INTO dieta (idPaciente, inicio, fin, pesoBuscado, limiteCalorico, pesoInicial) VALUES (?,?,?,?,?,?)";
+        String sql = "INSERT INTO dieta (idPaciente, inicio, fin, pesoBuscado, limiteCalorico, pesoInicial, estado) VALUES (?,?,?,?,?,?,?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, die.getIdPaciente().getIdPaciente());
@@ -44,6 +44,7 @@ public class DietaData {
             ps.setDouble(4, die.getPesoBuscado());
             ps.setInt(5, die.getLimiteCalorico());
             ps.setDouble(6, die.getPesoInicial());
+            ps.setBoolean(7, die.isEstado());
             ps.executeUpdate();
 
             ResultSet rs = ps.getGeneratedKeys();
@@ -59,14 +60,14 @@ public class DietaData {
             if (ex.getErrorCode() == 1062) {
                 JOptionPane.showMessageDialog(null, "La dieta ya se encuentra en la base de datos - verifique");
             } else {
-                JOptionPane.showMessageDialog(null, "DietaData Sentencia SQL erronea-AltaDieta");
+                JOptionPane.showMessageDialog(null, "DietaData Sentencia SQL erronea-GuardarDieta"+ex);
             }
         }
 
     }
 
     public void eliminarDieta(int idDieta) {
-        String sql = "DELETE FROM dieta WHERE idDieta=?";
+        String sql = "UPDATE dieta SET estado = false WHERE idDieta = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, idDieta);
@@ -77,7 +78,7 @@ public class DietaData {
             ps.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error, no se pudo borrar la dieta");
+            JOptionPane.showMessageDialog(null, "Error, no se pudo borrar la dieta"+ex);
         }
     }
 
