@@ -268,9 +268,12 @@ public class DietaData {
             while(rs.next()){
                 Dieta diet = new Dieta();
                 diet.setIdDieta(rs.getInt("idDieta"));
-                
-             
-//                diet.setIdPaciente(pa.obtenerPacientePorId(rs.getInt("idPaciente")));
+                PacienteData pa  = new PacienteData();
+                Paciente paciente = new Paciente();
+                //solucion para obtener el idpaciente en dieta y aparesca en la tabla
+                int x = pa.optenerXId(rs.getInt("idPaciente"));
+                paciente.setIdPaciente(x);
+                diet.setIdPaciente(paciente);
                 diet.setInicio(rs.getDate("inicio").toLocalDate());
                 diet.setFin(rs.getDate("fin").toLocalDate());
                 diet.setPesoBuscado(rs.getDouble("pesoBuscado"));
@@ -327,7 +330,29 @@ public class DietaData {
 //
 //    }
     
-    
+    public int optenerXId(int valor){
+        Dieta dieta = new Dieta();
+         int x = 0 ;
+        String sql = "SELECT idDieta FROM dieta WHERE idDieta = ?";
+         try {
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.setInt(1, valor);
+            ResultSet rs=ps.executeQuery();
+            
+            
+            if(rs.next()){              
+                dieta.setIdDieta(valor);
+                x = dieta.getIdDieta();
+            }
+            
+            ps.close();
+                
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "error al obtener id");
+        }
+         return x;
+    }
     
     
     

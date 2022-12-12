@@ -91,18 +91,19 @@ public class Main {
     //AGREGAR COMIDA A LA BASE DE DATOS
     //Dieta die = new Dieta(1, LocalDate.MAX, LocalDate.MIN, 53, 3000,55, true);
     //dieta.guardarDieta(die);
-    
+    DietaData die = new DietaData();
+    die.optenerXId(0);
     
       //------------------------PRUEBA ITEM COMIDA ------------------------//
     
-    ItemComidasData ite = new ItemComidasData();
-    DietaData dit =new DietaData();
-    ComidaData com =new ComidaData();
+    //ItemComidasData ite = new ItemComidasData();
+    //DietaData dit =new DietaData();
+   // ComidaData com =new ComidaData();
     
     
-    ItemComidas icom =new ItemComidas();
-    
-        System.out.println(dit.optenerDieta());
+    //ItemComidas icom =new ItemComidas();
+    //ite.obtener();
+      //  System.out.println(ite.obtener());
     
     //ite.GuardarComidaDieta(dit.buscarDietaPorId(2),com.obtenerComidaId(5));
     //ite.borradoLogComidaDieta(4);

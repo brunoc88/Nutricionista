@@ -75,7 +75,7 @@ public class ItemComidasData {
   //borrado logico de la dieta
   public void borradoLogComidaDieta(int idItemComidas)
   {
-      String sql="UPDATE `itemcomidas` SET `estado`='0' WHERE idItemComidas=?";
+      String sql="UPDATE itemcomidas SET estado= 0 WHERE idItemComidas=?";
       try {
             PreparedStatement ps=con.prepareStatement(sql);
             ps.setInt(1,idItemComidas);
@@ -122,32 +122,42 @@ public class ItemComidasData {
     
     }
     
-//    public ArrayList<ItemComidas> obtener(){
-//        ArrayList<ItemComidas> lista= new ArrayList();
-//        ItemComidas it = new ItemComidas();
-//        DietaData die = new DietaData();
-//        ComidaData co = new ComidaData();
-//   
-//        String sql = "SELECT * FROM itemcomidas WHERE estado =1";
-//        
-//        try {
-//            PreparedStatement ps=con.prepareStatement(sql);
-//            ResultSet rs=ps.executeQuery();
-//            
-//            while(rs.next())
-//            {
-//                it.setIdItemComidas(rs.getInt("idItemComidas"));
-//                it.setIdDieta(die.buscarDietaPorId(rs.getInt("idDieta")));
-//                it.setIdComida(co.obtenerComidaPorId(rs.getInt("idComida")));
-//                it.setEstado(rs.getBoolean("estado"));
-//                lista.add(it);
-//            }
-//             ps.close();
-//        } catch (SQLException ex) {
-//            JOptionPane.showMessageDialog(null,"error");
-//        }
-//        return lista;
-//    }
+    public ArrayList<ItemComidas> obtener(){
+        ArrayList<ItemComidas> lista= new ArrayList();
+        
+        
+   
+        String sql = "SELECT idItemComidas, idDieta, idComida, estado FROM itemcomidas ";
+        
+        try {
+            PreparedStatement ps=con.prepareStatement(sql);
+            ResultSet rs=ps.executeQuery();
+            
+            while(rs.next())
+            {
+                ItemComidas it = new ItemComidas();
+                DietaData die = new DietaData();
+                Dieta dieta = new Dieta();
+                Comida  co = new Comida();
+                ComidaData com = new ComidaData();
+            
+                it.setIdItemComidas(rs.getInt("idItemComidas"));
+                int x = die.optenerXId(rs.getInt("idDieta"));
+                dieta.setIdDieta(x);
+                it.setIdDieta(dieta);
+                int z = com.optenerXId(rs.getInt("idComida"));
+                co.setIdComida(z);
+                it.setIdComida(co);
+               
+                it.setEstado(rs.getBoolean("estado"));
+                lista.add(it);
+            }
+             ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"error");
+        }
+        return lista;
+    }
     
   
    public int caloriasTotal(int idDieta ){

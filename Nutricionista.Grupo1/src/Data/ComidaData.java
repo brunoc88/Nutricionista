@@ -6,6 +6,7 @@
 package Data;
 
 import Modelo.Comida;
+import Modelo.Dieta;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -252,6 +253,30 @@ public class ComidaData {
             JOptionPane.showMessageDialog(null, "ak Busca comida errorComidaData Sentencia SQL erronea-ObtenerComida"+ex);
         }
         return listaComida;
+    }
+    
+    public int optenerXId(int valor){
+        Comida co = new Comida();
+         int x = 0 ;
+        String sql = "SELECT idComida FROM comida WHERE idComida = ?";
+         try {
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.setInt(1, valor);
+            ResultSet rs=ps.executeQuery();
+            
+            
+            if(rs.next()){              
+                co.setIdComida(valor);
+                x = co.getIdComida();
+            }
+            
+            ps.close();
+                
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "error al obtener id");
+        }
+         return x;
     }
 }
    

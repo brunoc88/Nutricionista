@@ -5,6 +5,7 @@
  */
 package Data;
 
+import Modelo.Dieta;
 import Modelo.Paciente;
 import data.Conexion;
 import java.sql.Connection;
@@ -228,5 +229,29 @@ public class PacienteData {
             }
 
         }
+    }
+      
+       public int optenerXId(int valor){
+        Paciente pa = new Paciente();
+         int x = 0 ;
+        String sql = "SELECT idPaciente FROM paciente WHERE idPaciente = ?";
+         try {
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.setInt(1, valor);
+            ResultSet rs=ps.executeQuery();
+            
+            
+            if(rs.next()){              
+                pa.setIdPaciente(valor);
+                x = pa.getIdPaciente();
+            }
+            
+            ps.close();
+                
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "error al obtener id");
+        }
+         return x;
     }
 }
