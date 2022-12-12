@@ -42,6 +42,7 @@ public class consultorio extends javax.swing.JFrame {
         jCheckBoxMenuItem6 = new javax.swing.JCheckBoxMenuItem();
         jCheckBoxMenuItem4 = new javax.swing.JCheckBoxMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        jCheckBoxMenuItem3 = new javax.swing.JCheckBoxMenuItem();
         jCheckBoxPaciente = new javax.swing.JCheckBoxMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
@@ -103,6 +104,15 @@ public class consultorio extends javax.swing.JFrame {
         });
         jMenu1.add(jCheckBoxMenuItem4);
         jMenu1.add(jSeparator1);
+
+        jCheckBoxMenuItem3.setSelected(true);
+        jCheckBoxMenuItem3.setText("Dieta Por fechas");
+        jCheckBoxMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jCheckBoxMenuItem3);
 
         jCheckBoxPaciente.setFont(new java.awt.Font("Segoe Script", 1, 25)); // NOI18N
         jCheckBoxPaciente.setSelected(true);
@@ -178,6 +188,14 @@ public class consultorio extends javax.swing.JFrame {
                
     }//GEN-LAST:event_jCheckBoxMenuItem6ActionPerformed
 
+    private void jCheckBoxMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem3ActionPerformed
+       escritorio.removeAll();
+       escritorio.repaint();
+       DietaFecha R = new DietaFecha();
+       R.setVisible(true);
+       escritorio.add(R);
+    }//GEN-LAST:event_jCheckBoxMenuItem3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -217,6 +235,7 @@ public class consultorio extends javax.swing.JFrame {
     private javax.swing.JPanel escritorio;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem2;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem3;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem4;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem5;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem6;
