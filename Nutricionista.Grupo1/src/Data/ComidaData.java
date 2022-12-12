@@ -254,6 +254,7 @@ public class ComidaData {
         }
         return listaComida;
     }
+<<<<<<< HEAD
     
     public int optenerXId(int valor){
         Comida co = new Comida();
@@ -278,6 +279,9 @@ public class ComidaData {
         }
          return x;
     }
+=======
+     
+>>>>>>> 436851f7fa78001312723cf3ef790b50e98c7321
 }
    
 

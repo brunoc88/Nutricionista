@@ -123,10 +123,17 @@ public class Paciente {
         return true;
     }
 
+    
+
     @Override
     public String toString() {
+<<<<<<< HEAD
        return ""+idPaciente;
+=======
+        return  apellido +" "+ nombre ;
+>>>>>>> 436851f7fa78001312723cf3ef790b50e98c7321
     }
+   
 
    
     

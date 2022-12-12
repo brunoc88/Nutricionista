@@ -46,9 +46,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBoxMenuItem1ActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator2">
-            </MenuItem>
-            <MenuItem class="javax.swing.JCheckBoxMenuItem" name="jCheckBoxMenuItem3">
+            <MenuItem class="javax.swing.JCheckBoxMenuItem" name="jCheckBoxMenuItem6">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe Script" size="25" style="1"/>
@@ -57,10 +55,8 @@
                 <Property name="text" type="java.lang.String" value="Dieta"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBoxMenuItem3ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBoxMenuItem6ActionPerformed"/>
               </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator3">
             </MenuItem>
             <MenuItem class="javax.swing.JCheckBoxMenuItem" name="jCheckBoxMenuItem4">
               <Properties>
@@ -140,6 +136,11 @@
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JPanel" name="escritorio">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="cc" red="cc" type="rgb"/>
+        </Property>
+      </Properties>
 
       <Layout>
         <DimensionLayout dim="0">
