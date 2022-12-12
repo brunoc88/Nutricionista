@@ -69,6 +69,8 @@ public class Comidas extends javax.swing.JInternalFrame {
         setClosable(true);
         setMaximizable(true);
 
+        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
+
         jLabel1.setFont(new java.awt.Font("Segoe Script", 1, 30)); // NOI18N
         jLabel1.setText("Comidas");
 

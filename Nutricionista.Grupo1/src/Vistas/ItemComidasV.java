@@ -66,13 +66,11 @@ public class ItemComidasV extends javax.swing.JInternalFrame {
         setClosable(true);
         setMaximizable(true);
 
-        jPanel1.setBackground(new java.awt.Color(255, 204, 153));
+        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
         jLabel1.setFont(new java.awt.Font("Segoe Script", 1, 30)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Item Comidas");
 
-        jTable1.setBackground(new java.awt.Color(255, 255, 255));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -91,9 +89,8 @@ public class ItemComidasV extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        jbSelectEliminar.setBackground(new java.awt.Color(255, 204, 153));
+        jbSelectEliminar.setBackground(new java.awt.Color(204, 204, 255));
         jbSelectEliminar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jbSelectEliminar.setForeground(new java.awt.Color(0, 0, 0));
         jbSelectEliminar.setText("Eliminar comida de la dieta");
         jbSelectEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -105,16 +102,12 @@ public class ItemComidasV extends javax.swing.JInternalFrame {
         jBBorrar.setEnabled(false);
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Id Comida:");
-
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Iconos/salida.png"))); // NOI18N
 
-        jbSelectGuardar.setBackground(new java.awt.Color(255, 204, 153));
+        jbSelectGuardar.setBackground(new java.awt.Color(204, 204, 255));
         jbSelectGuardar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jbSelectGuardar.setForeground(new java.awt.Color(0, 0, 0));
         jbSelectGuardar.setText("Guardar comida en la dieta");
         jbSelectGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -122,7 +115,6 @@ public class ItemComidasV extends javax.swing.JInternalFrame {
             }
         });
 
-        jTable2.setBackground(new java.awt.Color(255, 255, 255));
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -148,9 +140,8 @@ public class ItemComidasV extends javax.swing.JInternalFrame {
             }
         });
 
-        jRBOptener.setBackground(new java.awt.Color(255, 204, 153));
+        jRBOptener.setBackground(new java.awt.Color(204, 204, 255));
         jRBOptener.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jRBOptener.setForeground(new java.awt.Color(0, 0, 0));
         jRBOptener.setText("Obtener comida por dieta");
         jRBOptener.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -158,9 +149,8 @@ public class ItemComidasV extends javax.swing.JInternalFrame {
             }
         });
 
-        jRBCalorias.setBackground(new java.awt.Color(255, 204, 153));
+        jRBCalorias.setBackground(new java.awt.Color(204, 204, 255));
         jRBCalorias.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jRBCalorias.setForeground(new java.awt.Color(0, 0, 0));
         jRBCalorias.setText("Calorias totales");
         jRBCalorias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

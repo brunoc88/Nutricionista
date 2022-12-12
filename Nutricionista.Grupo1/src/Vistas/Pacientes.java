@@ -56,8 +56,11 @@ public class Pacientes extends javax.swing.JInternalFrame {
         jBBorrar = new javax.swing.JButton();
         jBSalir = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(204, 204, 255));
         setClosable(true);
         setMaximizable(true);
+
+        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
         jLabel1.setFont(new java.awt.Font("Segoe Script", 1, 36)); // NOI18N
         jLabel1.setText("Paciente");
