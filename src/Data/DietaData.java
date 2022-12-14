@@ -416,11 +416,11 @@ public class DietaData {
         return dietas;
     }
         public ArrayList<Dieta>obtenerDietaActivas(){
-         ArrayList<Dieta> die = new ArrayList();
+         ArrayList<Dieta> listado = new ArrayList();
          
          Dieta diet = new Dieta();
         String sql = "SELECT * FROM dieta, paciente WHERE dieta.idPaciente=paciente.idPaciente and dieta.fin>=CURRENT_DATE ORDER BY inicio DESC;";
-        
+        pa= new PacienteData();
         try {
             PreparedStatement ps=con.prepareStatement(sql);
             
@@ -437,12 +437,12 @@ public class DietaData {
                 diet.setLimiteCalorico(rs.getInt("limiteCalorico"));
                 diet.setPesoInicial(rs.getDouble("pesoInicial"));                
          
-                die.add(diet);
+                listado.add(diet);
             }
             ps.close();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,"error"+e);
         }
-        return die;
+        return listado;
     }   
 }
