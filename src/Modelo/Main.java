@@ -27,7 +27,7 @@ public class Main {
         
  //----------------PRUEBA PACIENTE DATA---------------/
  
-        PacienteData p1 = new PacienteData();
+        //PacienteData p1 = new PacienteData();
         
         //GUARDAR PACIENTE
         //Paciente paciente = new Paciente(33112221, "Gonzales", "Julian", "soyloconcha",15444546, true);
@@ -57,7 +57,7 @@ public class Main {
 //-----------------------PRUEBA COMIDA DATA------------------/
 
 
-          ComidaData comp= new ComidaData();
+         // ComidaData comp= new ComidaData();
          
          //AGREGAR COMIDA A LA BASE DE DATOS
          //Comida com = new Comida("Arroz con pollo", "cebolla arroz y pollo",800,true);
@@ -95,12 +95,12 @@ public class Main {
     
       //------------------------PRUEBA ITEM COMIDA ------------------------//
     
-    ItemComidasData ite = new ItemComidasData();
-    DietaData dit =new DietaData();
-    ComidaData com =new ComidaData();
+    //ItemComidasData ite = new ItemComidasData();
+    //DietaData dit =new DietaData();
+    //ComidaData com =new ComidaData();
     
     
-     ItemComidas icom =new ItemComidas();
+   //  ItemComidas icom =new ItemComidas();
     
       //  System.out.println(dit.optenerDieta());
     
@@ -128,4 +128,5 @@ public class Main {
     
     
     
+    }
 }
