@@ -15,13 +15,14 @@ import Modelo.Dieta;
  * @author Ana luz
  */
 public class consultorio extends javax.swing.JFrame {
+
     private ComidaData comidaData;
     private PacienteData pacienteData;
     private DietaData dietaData;
 
     public consultorio() {
         initComponents();
-        
+
     }
 
     /**
@@ -139,39 +140,42 @@ public class consultorio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jCheckBoxPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxPacienteActionPerformed
-       escritorio.removeAll();
-       escritorio.repaint();
-       Pacientes pas=new Pacientes();
-       pas.setVisible(true);
-       escritorio.add(pas);
-       escritorio.repaint();
-       
+        escritorio.removeAll();
+        escritorio.repaint();
+        Pacientes pas = new Pacientes();
+        pas.setVisible(true);
+        escritorio.add(pas);
+        escritorio.repaint();
+
     }//GEN-LAST:event_jCheckBoxPacienteActionPerformed
 
     private void jCheckBoxMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem1ActionPerformed
         escritorio.removeAll();
-       escritorio.repaint();
-        Comidas comi=new Comidas();
+        escritorio.repaint();
+        Comidas comi = new Comidas();
         comi.setVisible(true);
         escritorio.add(comi);
         escritorio.repaint();
         //comi.show();??//no se que hace
-        
+
     }//GEN-LAST:event_jCheckBoxMenuItem1ActionPerformed
 
     private void jCheckBoxMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem6ActionPerformed
-      // MenuDieta dm = new MenuDieta();
-       //dm.setVisible(true);
-       //escritorio.add(dm);
-       //escritorio.repaint();
-       escritorio.removeAll();
-       escritorio.repaint();
-       MenuDieta R = new MenuDieta();
-       R.setVisible(true);
-       escritorio.add(R);
-      // escritorio.moveToFront(R);
+        // MenuDieta dm = new MenuDieta();
+        //dm.setVisible(true);
+        //escritorio.add(dm);
+        //escritorio.repaint();
+        escritorio.removeAll();
+        escritorio.repaint();
+       
+        MenuDieta R = new MenuDieta();
+        R.setVisible(true);
+        
+        escritorio.add(R);
+        
+        // escritorio.moveToFront(R);
 
-               
+
     }//GEN-LAST:event_jCheckBoxMenuItem6ActionPerformed
 
     private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
@@ -231,11 +235,4 @@ public class consultorio extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator1;
     // End of variables declaration//GEN-END:variables
 
-    
-
-
-
-
 }
-
-

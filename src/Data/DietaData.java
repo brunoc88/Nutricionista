@@ -60,7 +60,7 @@ public class DietaData {
             if (ex.getErrorCode() == 1062) {
                 JOptionPane.showMessageDialog(null, "La dieta ya se encuentra en la base de datos - verifique");
             } else {
-                JOptionPane.showMessageDialog(null, "DietaData Sentencia SQL erronea-GuardarDieta"+ex);
+                JOptionPane.showMessageDialog(null, "DietaData Sentencia SQL erronea-GuardarDieta" + ex);
             }
         }
 
@@ -78,7 +78,7 @@ public class DietaData {
             ps.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error, no se pudo borrar la dieta"+ex);
+            JOptionPane.showMessageDialog(null, "Error, no se pudo borrar la dieta" + ex);
         }
     }
 
@@ -181,26 +181,30 @@ public class DietaData {
 
     }
 
-    public ArrayList<Paciente> pacientesBajar(int peso) {
-        ArrayList<Paciente> listaPaciente = new ArrayList();
-
-        String sql = "SELECT paciente.idPaciente,paciente.apellido, paciente.nombre, paciente.dni,dieta.idDieta,dieta.inicio,dieta.fin,"
-                + "dieta.pesoBuscado,dieta.pesoInicial FROM paciente,"
-                + " dieta WHERE paciente.idpaciente=dieta.idpaciente and (dieta.pesoInicial-dieta.pesoBuscado)>=?;";
+    public ArrayList<Dieta> pacientesBajar(int peso) {
+        ArrayList<Dieta> listaDieta = new ArrayList();
+        String sql = "SELECT * FROM dieta WHERE (dieta.pesoInicial-dieta.pesoBuscado)>=?";
 
         try {
+
+            Paciente pas, pas2;
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, peso);
-            ResultSet rs = ps.executeQuery();//select
+            ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
+                //hacer un if para el estado
 
-                Paciente pa = new Paciente();
-                pa.setNombre(rs.getString("nombre"));
-                pa.setApellido(rs.getString("apellido"));
-                pa.setDni(rs.getInt("dni"));
-           
-                listaPaciente.add(pa);
+                PacienteData pd = new PacienteData();
+                pas = pd.obtenerPacientePorIdActivos(rs.getInt(2));
+                
+                    Dieta dt = new Dieta();
+                    dt.setPesoBuscado(rs.getDouble("dieta.pesoBuscado"));
+                    dt.setPesoInicial(rs.getDouble(7));
+                    dt.setIdPaciente(pas);
+                    listaDieta.add(dt);
+                
+
             }
 
             ps.close();
@@ -208,15 +212,46 @@ public class DietaData {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "DietaData Sentencia SQL erronea-ObtenerPacientequeBajar10");
         }
-        return listaPaciente;
+        return listaDieta;
     }
-    public ArrayList<Dieta> buscarDietaPorFecha(int dni, LocalDate inicio, LocalDate fin ) {
-        
+// cambie el metodo por otro Daniel
+//    public ArrayList<Paciente> pacientesBajar(int peso) {
+//        ArrayList<Paciente> listaPaciente = new ArrayList();
+//
+//        String sql = "SELECT paciente.idPaciente,paciente.apellido, paciente.nombre, paciente.dni,dieta.idDieta,dieta.inicio,dieta.fin,"
+//                + "dieta.pesoBuscado,dieta.pesoInicial FROM paciente,"
+//                + " dieta WHERE paciente.idpaciente=dieta.idpaciente and (dieta.pesoInicial-dieta.pesoBuscado)>=?;";
+//
+//        try {
+//            PreparedStatement ps = con.prepareStatement(sql);
+//            ps.setInt(1, peso);
+//            ResultSet rs = ps.executeQuery();//select
+//
+//            while (rs.next()) {
+//
+//                Paciente pa = new Paciente();
+//                pa.setNombre(rs.getString("nombre"));
+//                pa.setApellido(rs.getString("apellido"));
+//                pa.setDni(rs.getInt("dni"));
+//           
+//                listaPaciente.add(pa);
+//            }
+//
+//            ps.close();
+//
+//        } catch (SQLException ex) {
+//            JOptionPane.showMessageDialog(null, "DietaData Sentencia SQL erronea-ObtenerPacientequeBajar10");
+//        }
+//        return listaPaciente;
+//    }
+
+    public ArrayList<Dieta> buscarDietaPorFecha(int dni, LocalDate inicio, LocalDate fin) {
+
         ArrayList<Dieta> dietas = new ArrayList();
-      //  die = new Dieta();
+        //  die = new Dieta();
         pa = new PacienteData();
-        Paciente pac= new Paciente();
-        
+        Paciente pac = new Paciente();
+
         String sql = "SELECT * FROM dieta as dt INNER JOIN paciente as pa on pa.idPaciente=dt.idPaciente WHERE pa.dni= ? AND inicio >= ? and fin <= ? ";
 
         try {
@@ -224,52 +259,50 @@ public class DietaData {
             ps.setInt(1, dni);
             ps.setDate(2, Date.valueOf(inicio));
             ps.setDate(3, Date.valueOf(fin));
-            
+
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                
-                 Dieta diet = new Dieta();
-                
+
+                Dieta diet = new Dieta();
+
                 diet.setIdDieta(rs.getInt("idDieta"));
                 diet.setIdPaciente(pa.obtenerPacientePorId(rs.getInt("idPaciente")));
-            diet.setInicio(rs.getDate("inicio").toLocalDate());
+                diet.setInicio(rs.getDate("inicio").toLocalDate());
                 diet.setFin(rs.getDate("fin").toLocalDate());
                 diet.setPesoBuscado(rs.getDouble("pesoBuscado"));
                 diet.setLimiteCalorico(rs.getInt("limiteCalorico"));
-                diet.setPesoInicial(rs.getDouble("pesoInicial"));                
+                diet.setPesoInicial(rs.getDouble("pesoInicial"));
                 diet.setEstado(rs.getBoolean("estado"));
-                
-               // die.setIdPaciente(pa);
-               dietas.add(diet);
-               
-               
+
+                // die.setIdPaciente(pa);
+                dietas.add(diet);
+
             }
 
             ps.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "DietaData Sentencia SQL erronea-obtenerDietaPordni"+ex);
+            JOptionPane.showMessageDialog(null, "DietaData Sentencia SQL erronea-obtenerDietaPordni" + ex);
         }
         return dietas;
 
     }
-    
-    public ArrayList<Dieta>optenerDieta(){
-         ArrayList<Dieta> dietas = new ArrayList();
-        
-        
+
+    public ArrayList<Dieta> optenerDieta() {
+        ArrayList<Dieta> dietas = new ArrayList();
+
         String sql = "SELECT * FROM dieta WHERE estado =1";
-        
+
         try {
-            PreparedStatement ps=con.prepareStatement(sql);
-            
-            ResultSet rs=ps.executeQuery();
-            
-            while(rs.next()){
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
                 Dieta diet = new Dieta();
                 diet.setIdDieta(rs.getInt("idDieta"));
-                PacienteData pa  = new PacienteData();
+                PacienteData pa = new PacienteData();
                 Paciente paciente = new Paciente();
                 //solucion para obtener el idpaciente en dieta y aparesca en la tabla
                 int x = pa.optenerXId(rs.getInt("idPaciente"));
@@ -279,13 +312,13 @@ public class DietaData {
                 diet.setFin(rs.getDate("fin").toLocalDate());
                 diet.setPesoBuscado(rs.getDouble("pesoBuscado"));
                 diet.setLimiteCalorico(rs.getInt("limiteCalorico"));
-                diet.setPesoInicial(rs.getDouble("pesoInicial"));                
+                diet.setPesoInicial(rs.getDouble("pesoInicial"));
                 diet.setEstado(rs.getBoolean("estado"));
                 dietas.add(diet);
             }
             ps.close();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null,"error"+e);
+            JOptionPane.showMessageDialog(null, "error" + e);
         }
         return dietas;
     }
@@ -330,65 +363,57 @@ public class DietaData {
 //        return die;
 //
 //    }
-    
-
-    public int optenerXId(int valor){
+    public int optenerXId(int valor) {
         Dieta dieta = new Dieta();
-         int x = 0 ;
+        int x = 0;
         String sql = "SELECT idDieta FROM dieta WHERE idDieta = ?";
-         try {
-            PreparedStatement ps=con.prepareStatement(sql);
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, valor);
-            ResultSet rs=ps.executeQuery();
-            
-            
-            if(rs.next()){              
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
                 dieta.setIdDieta(valor);
                 x = dieta.getIdDieta();
             }
-            
+
             ps.close();
-                
-            
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "error al obtener id");
         }
-         return x;
+        return x;
     }
-    
 
-    
-        public ArrayList<Dieta>obtenerDietaPorPaciente(Paciente pac){
-         ArrayList<Dieta> dietas = new ArrayList();
-         pa= new PacienteData();
-         Dieta diet = new Dieta();
+    public ArrayList<Dieta> obtenerDietaPorPaciente(Paciente pac) {
+        ArrayList<Dieta> dietas = new ArrayList();
+        pa = new PacienteData();
+        Dieta diet = new Dieta();
         String sql = "select * from dieta where idPaciente = ? order by inicio Desc";
-        
+
         try {
-            PreparedStatement ps=con.prepareStatement(sql);
-            ps.setInt(1,pac.getIdPaciente());
-            ResultSet rs=ps.executeQuery();
-            
-            while(rs.next()){
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, pac.getIdPaciente());
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
                 diet = new Dieta();
-                
+
                 diet.setIdDieta(rs.getInt("idDieta"));
                 diet.setIdPaciente(pa.obtenerPacientePorId(rs.getInt("idPaciente")));
                 diet.setInicio(rs.getDate("inicio").toLocalDate());
                 diet.setFin(rs.getDate("fin").toLocalDate());
                 diet.setPesoBuscado(rs.getDouble("pesoBuscado"));
                 diet.setLimiteCalorico(rs.getInt("limiteCalorico"));
-                diet.setPesoInicial(rs.getDouble("pesoInicial"));                
+                diet.setPesoInicial(rs.getDouble("pesoInicial"));
                 diet.setEstado(rs.getBoolean("estado"));
                 dietas.add(diet);
             }
             ps.close();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null,"error"+e);
+            JOptionPane.showMessageDialog(null, "error" + e);
         }
         return dietas;
-    }    
-    
-    
-}
+    }
 
+}

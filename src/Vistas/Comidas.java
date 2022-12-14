@@ -9,6 +9,7 @@ import Data.ComidaData;
 import Modelo.Comida;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class Comidas extends javax.swing.JInternalFrame {
@@ -74,8 +75,12 @@ public class Comidas extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Segoe Script", 1, 30)); // NOI18N
         jLabel1.setText("Comidas");
 
+        jTableComida.setFont(new java.awt.Font("Segoe Script", 0, 12)); // NOI18N
         jTableComida.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
@@ -94,8 +99,10 @@ public class Comidas extends javax.swing.JInternalFrame {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Iconos/comida.png"))); // NOI18N
 
+        jLabel3.setFont(new java.awt.Font("Segoe Script", 1, 12)); // NOI18N
         jLabel3.setText("Nombre :");
 
+        jTFNombre.setFont(new java.awt.Font("Segoe Script", 0, 12)); // NOI18N
         jTFNombre.setEnabled(false);
         jTFNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,9 +115,11 @@ public class Comidas extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel4.setFont(new java.awt.Font("Segoe Script", 1, 12)); // NOI18N
         jLabel4.setText("Detalle");
 
         jTextAreaDetalle.setColumns(20);
+        jTextAreaDetalle.setFont(new java.awt.Font("Segoe Script", 0, 12)); // NOI18N
         jTextAreaDetalle.setRows(5);
         jTextAreaDetalle.setEnabled(false);
         jScrollPane2.setViewportView(jTextAreaDetalle);
@@ -147,6 +156,7 @@ public class Comidas extends javax.swing.JInternalFrame {
             }
         });
 
+        jRBCargarComida.setFont(new java.awt.Font("Segoe Script", 1, 12)); // NOI18N
         jRBCargarComida.setText("Cargar Comida Nueva");
         jRBCargarComida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -154,6 +164,7 @@ public class Comidas extends javax.swing.JInternalFrame {
             }
         });
 
+        jRBActualizaComida.setFont(new java.awt.Font("Segoe Script", 1, 12)); // NOI18N
         jRBActualizaComida.setText("Actualizar Comida");
         jRBActualizaComida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -161,6 +172,7 @@ public class Comidas extends javax.swing.JInternalFrame {
             }
         });
 
+        jRBBorrarComida.setFont(new java.awt.Font("Segoe Script", 1, 12)); // NOI18N
         jRBBorrarComida.setText("Borrar Comida");
         jRBBorrarComida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -168,6 +180,7 @@ public class Comidas extends javax.swing.JInternalFrame {
             }
         });
 
+        jRBBuscNombre.setFont(new java.awt.Font("Segoe Script", 1, 12)); // NOI18N
         jRBBuscNombre.setText("Buscar Comida por Nombre");
         jRBBuscNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -175,6 +188,7 @@ public class Comidas extends javax.swing.JInternalFrame {
             }
         });
 
+        jRBBuscActivas.setFont(new java.awt.Font("Segoe Script", 1, 12)); // NOI18N
         jRBBuscActivas.setText("Buscar Comidas Activas");
         jRBBuscActivas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -182,13 +196,15 @@ public class Comidas extends javax.swing.JInternalFrame {
             }
         });
 
-        jRBBuscId.setText("Buscar Comida por ID");
+        jRBBuscId.setFont(new java.awt.Font("Segoe Script", 1, 12)); // NOI18N
+        jRBBuscId.setText("Buscar Comida por Codigo");
         jRBBuscId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRBBuscIdActionPerformed(evt);
             }
         });
 
+        jTFId.setFont(new java.awt.Font("Segoe Script", 0, 12)); // NOI18N
         jTFId.setEnabled(false);
         jTFId.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -196,8 +212,10 @@ public class Comidas extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel5.setFont(new java.awt.Font("Segoe Script", 1, 12)); // NOI18N
         jLabel5.setText("Calorias :");
 
+        jTFCalorias.setFont(new java.awt.Font("Segoe Script", 0, 12)); // NOI18N
         jTFCalorias.setEnabled(false);
         jTFCalorias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -210,8 +228,10 @@ public class Comidas extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel6.setFont(new java.awt.Font("Segoe Script", 1, 12)); // NOI18N
         jLabel6.setText("Estado:");
 
+        jTFEstado.setFont(new java.awt.Font("Segoe Script", 0, 12)); // NOI18N
         jTFEstado.setEnabled(false);
         jTFEstado.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -219,7 +239,8 @@ public class Comidas extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel7.setText("Id:");
+        jLabel7.setFont(new java.awt.Font("Segoe Script", 1, 12)); // NOI18N
+        jLabel7.setText("Codigo");
 
         jBSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Iconos/salida.png"))); // NOI18N
         jBSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -294,7 +315,7 @@ public class Comidas extends javax.swing.JInternalFrame {
                             .addComponent(jRBBuscId)
                             .addComponent(jRBBuscActivas)
                             .addComponent(jRBBuscNombre))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                         .addComponent(jBBuscar)
                         .addGap(27, 27, 27)))
                 .addGap(67, 67, 67))
@@ -357,7 +378,7 @@ public class Comidas extends javax.swing.JInternalFrame {
                     .addComponent(jBEliminar)
                     .addComponent(jBActualizar)
                     .addComponent(jBSalir))
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -435,7 +456,6 @@ public class Comidas extends javax.swing.JInternalFrame {
         jRBBuscActivas.setSelected(false);
         jRBBuscId.setSelected(false);
         jTFEstado.setEnabled(false);
-      
 
         jBCargar.setEnabled(false);
         jBEliminar.setEnabled(true);
@@ -600,7 +620,6 @@ public class Comidas extends javax.swing.JInternalFrame {
         comidaSelec = null;
         cargarComidas();
         limpiaCampos();
-        
 
 
     }//GEN-LAST:event_jBEliminarActionPerformed
@@ -643,12 +662,12 @@ public class Comidas extends javax.swing.JInternalFrame {
 
     private void jTFEstadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFEstadoKeyTyped
         // TODO add your handling code here:
-           char c = evt.getKeyChar();
+        char c = evt.getKeyChar();
 
-        if ((c < 'a' || c > 'z' ) && (c < 'A' || c > 'Z')) {
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z')) {
             evt.consume();
         }
-        
+
     }//GEN-LAST:event_jTFEstadoKeyTyped
 
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
@@ -698,7 +717,6 @@ public class Comidas extends javax.swing.JInternalFrame {
 
             modelo.addRow(new Object[]{com.getIdComida(), com.getNombre(), com.getDetalle(), com.getCalorias(), com.isEstado()});
 
-
         }
     }
 
@@ -727,7 +745,7 @@ public class Comidas extends javax.swing.JInternalFrame {
         borrarFilasTabla();
         ArrayList<Comida> lista = (ArrayList) comidaData.buscaComida(bus);
         for (Comida com : lista) {
-           
+
             modelo.addRow(new Object[]{com.getIdComida(), com.getNombre(), com.getDetalle(), com.getCalorias(), com.isEstado()});
 
         }
@@ -747,7 +765,7 @@ public class Comidas extends javax.swing.JInternalFrame {
     private void armarCabeceraTabla() {
         //titulos de las columnas
         ArrayList<Object> columnas = new ArrayList<Object>();
-        columnas.add("ID");
+        columnas.add("Codigo");
         columnas.add("Nombre");
         columnas.add("Detalle");
         columnas.add("Calorias");

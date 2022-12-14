@@ -101,7 +101,7 @@ public class Pacientes extends javax.swing.JInternalFrame {
         });
 
         jRBBuscarxID.setFont(new java.awt.Font("Segoe Script", 1, 18)); // NOI18N
-        jRBBuscarxID.setText("Buscar Paciente por ID");
+        jRBBuscarxID.setText("Buscar Paciente por Codigo");
         jRBBuscarxID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRBBuscarxIDActionPerformed(evt);
@@ -136,6 +136,11 @@ public class Pacientes extends javax.swing.JInternalFrame {
         jLabel2.setText("DNI :");
 
         jTFDNI.setEnabled(false);
+        jTFDNI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTFDNIActionPerformed(evt);
+            }
+        });
         jTFDNI.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTFDNIKeyTyped(evt);
@@ -171,11 +176,21 @@ public class Pacientes extends javax.swing.JInternalFrame {
         jLabel7.setText("Estado :");
 
         jTFEstado.setEnabled(false);
+        jTFEstado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTFEstadoActionPerformed(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("Segoe Script", 1, 18)); // NOI18N
-        jLabel8.setText("ID :");
+        jLabel8.setText("Codigo");
 
         jTFID.setEnabled(false);
+        jTFID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTFIDActionPerformed(evt);
+            }
+        });
 
         jBActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Iconos/actualizar.png"))); // NOI18N
         jBActualizar.setEnabled(false);
@@ -247,9 +262,9 @@ public class Pacientes extends javax.swing.JInternalFrame {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel5)
-                                            .addComponent(jLabel6)
                                             .addComponent(jLabel7)
-                                            .addComponent(jLabel8))
+                                            .addComponent(jLabel8)
+                                            .addComponent(jLabel6))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jTFomicilio)
@@ -562,6 +577,7 @@ public class Pacientes extends javax.swing.JInternalFrame {
                 jTFomicilio.setText(domicilio);
                 jTFTelefono.setText(tel + "");
                 jTFEstado.setText(estado + "");
+                
 
                 pacienteSelec = new Paciente();
                 pacienteSelec.setIdPaciente(id);
@@ -656,6 +672,18 @@ public class Pacientes extends javax.swing.JInternalFrame {
          dispose();
     }//GEN-LAST:event_jBSalirActionPerformed
 
+    private void jTFEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFEstadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTFEstadoActionPerformed
+
+    private void jTFDNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFDNIActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTFDNIActionPerformed
+
+    private void jTFIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTFIDActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBActualizar;
@@ -692,7 +720,7 @@ public class Pacientes extends javax.swing.JInternalFrame {
     private void armarCabeceraTabla() {
         //titulos de las columnas
         ArrayList<Object> columnas = new ArrayList<Object>();
-        columnas.add("ID");
+        columnas.add("Codigo");
         columnas.add("DNI");
         columnas.add("Apellido");
         columnas.add("Nombre");

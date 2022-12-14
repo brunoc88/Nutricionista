@@ -263,10 +263,10 @@ public class MenuDieta extends javax.swing.JInternalFrame {
                     .addComponent(jLabel7)
                     .addComponent(jTextfechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 138, Short.MAX_VALUE)
-                .addGroup(panelModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(guardarModicar)
                     .addComponent(modificar)
-                    .addComponent(eliminar))
+                    .addComponent(eliminar, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(6, 6, 6))
         );
 
@@ -331,7 +331,7 @@ public class MenuDieta extends javax.swing.JInternalFrame {
         });
 
         jAgregarComida.setFont(new java.awt.Font("Segoe Script", 1, 16)); // NOI18N
-        jAgregarComida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Iconos/agregarcomida.png"))); // NOI18N
+        jAgregarComida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Iconos/signo-de-mas.png"))); // NOI18N
         jAgregarComida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jAgregarComidaActionPerformed(evt);
@@ -339,7 +339,7 @@ public class MenuDieta extends javax.swing.JInternalFrame {
         });
 
         jQuitarComida.setFont(new java.awt.Font("Segoe Script", 1, 16)); // NOI18N
-        jQuitarComida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Iconos/quitarcomida.png"))); // NOI18N
+        jQuitarComida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Iconos/signo-menos.png"))); // NOI18N
         jQuitarComida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jQuitarComidaActionPerformed(evt);
@@ -441,17 +441,15 @@ public class MenuDieta extends javax.swing.JInternalFrame {
                                 .addGap(257, 257, 257)
                                 .addComponent(jLabel1)))
                         .addGap(260, 260, 260)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(78, 78, 78)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jAgregarComida)
                             .addComponent(jQuitarComida))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(panelModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(panelModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(639, 639, 639))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -488,13 +486,15 @@ public class MenuDieta extends javax.swing.JInternalFrame {
                         .addComponent(jComboComidas, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(27, 27, 27)
                         .addComponent(jLabel2)
-                        .addGap(20, 20, 20)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(20, 20, 20)
                                 .addComponent(jAgregarComida)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jQuitarComida)))
+                                .addComponent(jQuitarComida))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(5, 5, 5)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9)
@@ -502,18 +502,24 @@ public class MenuDieta extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(103, 103, 103)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(260, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(876, 876, 876))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(276, 276, 276))
         );
 
         pack();
@@ -664,7 +670,14 @@ jTextfechaFinal.setText(LocalDate.parse( new SimpleDateFormat("yyyy-MM-dd").form
     }//GEN-LAST:event_jTextinicioPropertyChange
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+       jPanel1.removeAll();
+        jPanel1.repaint();
+        PacXkilos1 pk = new PacXkilos1();
+        jPanel1.removeAll();
+        jPanel1.repaint();
+        pk.setVisible(true);
+        jPanel1.add(pk);
+        jPanel1.repaint();
     }//GEN-LAST:event_jButton3ActionPerformed
 
   
