@@ -548,6 +548,10 @@ public class MenuDieta extends javax.swing.JInternalFrame {
         cargarTabla();
         armarComida(0);
         this.jTextPesoBuscado.setText("");
+        this.jTextCalorias.setText("");
+        this.jTextfechaFinal.setText("");
+        this.jTextpesoInicial.setText("");
+        this.jTextlimiteCalorico.setText("");
       //  eliminar.setVisible(false);
     }//GEN-LAST:event_eliminarActionPerformed
 

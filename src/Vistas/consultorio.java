@@ -150,12 +150,7 @@ public class consultorio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jCheckBoxMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem4ActionPerformed
-        escritorio.removeAll();
-        escritorio.repaint();
-        ItemComidasV item=new ItemComidasV();
-        item.setVisible(true);
-        escritorio.add(item);
-        escritorio.repaint();
+    
     }//GEN-LAST:event_jCheckBoxMenuItem4ActionPerformed
 
     private void jCheckBoxPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxPacienteActionPerformed
