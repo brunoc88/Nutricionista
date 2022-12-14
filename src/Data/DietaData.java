@@ -197,14 +197,13 @@ public class DietaData {
 
                 PacienteData pd = new PacienteData();
                 pas = pd.obtenerPacientePorIdActivos(rs.getInt(2));
-                
+                if (pas.isEstado()) {
                     Dieta dt = new Dieta();
                     dt.setPesoBuscado(rs.getDouble("dieta.pesoBuscado"));
                     dt.setPesoInicial(rs.getDouble(7));
                     dt.setIdPaciente(pas);
                     listaDieta.add(dt);
-                
-
+                }
             }
 
             ps.close();
