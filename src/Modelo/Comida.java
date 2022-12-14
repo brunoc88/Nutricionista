@@ -101,8 +101,10 @@ public class Comida {
 
     @Override
     public String toString() {
-        return  "" + idComida;
+        return  idComida + " "+ nombre + "Calorias: "+ calorias ;
     }
+
+   
 
    
     

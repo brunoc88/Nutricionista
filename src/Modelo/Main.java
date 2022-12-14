@@ -100,9 +100,9 @@ public class Main {
     ComidaData com =new ComidaData();
     
     
-    ItemComidas icom =new ItemComidas();
+     ItemComidas icom =new ItemComidas();
     
-        System.out.println(dit.optenerDieta());
+      //  System.out.println(dit.optenerDieta());
     
     //ite.GuardarComidaDieta(dit.buscarDietaPorId(2),com.obtenerComidaId(5));
     //ite.borradoLogComidaDieta(4);
@@ -110,11 +110,13 @@ public class Main {
        // System.out.println(ite.obtenerComidaPorDieta(2));
         //System.out.println(ite.caloriasTotal(2));
    //no puedo intanciar las clases
-            }
+            
+        //System.out.println(com.obtenerComidaPorDieta(3));
+        
+        
     
     
-    
-    
+    //---------------------------
     
     
     

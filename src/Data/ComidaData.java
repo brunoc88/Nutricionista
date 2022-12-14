@@ -7,6 +7,7 @@ package Data;
 
 import Modelo.Comida;
 import Modelo.Dieta;
+import Modelo.ItemComidas;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -176,7 +177,39 @@ public class ComidaData {
        return comi;
          
     }
-  
+   public  ArrayList <ItemComidas> obtenerComidaPorDieta(int idDieta) {
+      ArrayList <ItemComidas> listadocomida= new ArrayList();
+      ItemComidas comi;
+      Comida c ;
+      String sql= "SELECT * FROM `itemcomidas`,comida WHERE ItemComidas.idComida = comida.idComida AND ItemComidas.idDieta = ? AND comida.estado=true AND itemcomidas.estado=true;";
+        //String sql= "SELECT * FROM comida WHERE estado = 1 AND idComida = ?";
+        
+        
+        try {
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.setInt(1, idDieta);
+            ResultSet rs=ps.executeQuery();
+            
+            while(rs.next()){   
+                comi= new ItemComidas(); 
+                c= new Comida();
+                comi.setIdItemComidas(rs.getInt("idItemComidas"));
+                c.setNombre(rs.getString("nombre"));
+                c.setCalorias(rs.getInt("calorias"));
+                comi.setIdComida(c);
+                 
+                listadocomida.add(comi);
+            }
+            
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "No se pudo obtener comida");
+        }
+        
+       return listadocomida;
+         
+    }
   public void borrarComida (int idComida){
         String sql="UPDATE comida SET estado=0 WHERE idComida=?";
         try {
