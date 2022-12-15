@@ -149,7 +149,11 @@ public class BusquedaXFechas extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
-        llenarTabla();
+        try {
+            llenarTabla();
+        } catch (NullPointerException e) {
+                JOptionPane.showMessageDialog(this, "Error: Ingrese un rango de fechas!");
+        }
     }//GEN-LAST:event_jbBuscarActionPerformed
 
     private void cargarComboBox() {
