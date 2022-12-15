@@ -91,6 +91,7 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="title" type="java.lang.String" value="Consultorio Nutricion Grupo 1"/>
     <Property name="extendedState" type="int" value="6"/>
   </Properties>
   <SyntheticProperties>

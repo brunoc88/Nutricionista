@@ -534,8 +534,22 @@ public class MenuDieta extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       this.jTextPesoBuscado.setText("");
+       this.jTextCalorias.setText("");
+       this.jTextfechaFinal.setText("");
+       this.jTextpesoInicial.setText("");
+       this.jTextlimiteCalorico.setText("");
+       DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+       String fecha = String.valueOf(LocalDate.now().toString());
+       LocalDate inputAdDate = LocalDate.parse(fecha, formatter);
+       java.util.Date f = Date.from(inputAdDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+       this.jTextinicio.setDate(f);
+       this.jTextfechaFinal.setText(LocalDate.now().plusDays(7).format(formatter).toString());
+
+       cargarTabla();
       
-      cargarTabla();
+      
+      
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void combopacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combopacientesActionPerformed
@@ -586,6 +600,7 @@ public class MenuDieta extends javax.swing.JInternalFrame {
         this.jTextfechaFinal.setText("");
         this.jTextpesoInicial.setText("");
         this.jTextlimiteCalorico.setText("");
+        
       //  eliminar.setVisible(false);
     }//GEN-LAST:event_eliminarActionPerformed
 
@@ -690,7 +705,10 @@ jTextfechaFinal.setText(LocalDate.parse( new SimpleDateFormat("yyyy-MM-dd").form
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-         jPanel1.removeAll();
+ 
+
+        
+       jPanel1.removeAll();
         jPanel1.repaint();
         DietasActivas die = new DietasActivas();
         jPanel1.removeAll();
@@ -698,6 +716,7 @@ jTextfechaFinal.setText(LocalDate.parse( new SimpleDateFormat("yyyy-MM-dd").form
         die.setVisible(true);
         jPanel1.add(die);
         jPanel1.repaint();
+
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed

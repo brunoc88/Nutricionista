@@ -52,6 +52,7 @@ public class consultorio extends javax.swing.JFrame {
         jCheckBoxMenuItem5.setText("jCheckBoxMenuItem5");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Consultorio Nutricion Grupo 1");
         setExtendedState(6);
 
         escritorio.setBackground(new java.awt.Color(204, 204, 255));
