@@ -365,6 +365,11 @@ public class MenuDieta extends javax.swing.JInternalFrame {
 
         jButton2.setFont(new java.awt.Font("Segoe Script", 1, 16)); // NOI18N
         jButton2.setText("Fecha");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setFont(new java.awt.Font("Segoe Script", 1, 16)); // NOI18N
         jButton3.setText("Kilos");
@@ -698,6 +703,18 @@ jTextfechaFinal.setText(LocalDate.parse( new SimpleDateFormat("yyyy-MM-dd").form
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+          jPanel1.removeAll();
+        jPanel1.repaint();
+        BusquedaXFechas bus = new BusquedaXFechas();
+        jPanel1.removeAll();
+        jPanel1.repaint();
+        bus.setVisible(true);
+        jPanel1.add(bus);
+        jPanel1.repaint();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
   
     

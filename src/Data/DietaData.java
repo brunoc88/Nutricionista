@@ -444,4 +444,37 @@ public class DietaData {
         }
         return listado;
     }   
+             public ArrayList<Dieta> listadoDietasXPaciente(int idPaciente, LocalDate inicio, LocalDate fin){
+        die = new Dieta();
+        ArrayList<Dieta>lista = new ArrayList();
+        String sql = " SELECT * FROM dieta WHERE idPaciente = ? AND inicio >= ? AND fin <=?";
+       
+        try {
+            
+            
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idPaciente);
+            ps.setDate(2, Date.valueOf(inicio));
+            ps.setDate(3, Date.valueOf(fin));
+            
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                die = new Dieta();
+                die.setIdDieta(rs.getInt("idDieta"));
+                die.setInicio(rs.getDate("inicio").toLocalDate());
+                die.setFin(rs.getDate("fin").toLocalDate());
+                die.setPesoBuscado(rs.getDouble("pesoBuscado"));
+                die.setLimiteCalorico(rs.getInt("limiteCalorico"));
+                die.setPesoInicial(rs.getDouble("pesoInicial"));
+                System.out.println(die.getIdDieta());
+                lista.add(die);
+            }
+            ps.close();
+           
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"Error al buscar Dietas" + e);
+        }
+        return lista;
+    }
 }
