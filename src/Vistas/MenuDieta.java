@@ -32,40 +32,36 @@ import javax.swing.table.DefaultTableModel;
  */
 public class MenuDieta extends javax.swing.JInternalFrame {
 
-        private ArrayList <Paciente> listadoPaciente;
-        private ArrayList <Comida> listadocomida;
-        private ArrayList <Dieta> listadodieta;
-        private PacienteData pasdata= new PacienteData();
-        private Paciente pa = new Paciente();
-        private DietaData dieda = new DietaData();
-        private Dieta die = new Dieta();
-        private ItemComidasData cdata= new ItemComidasData();
-        private ComidaData comiData = new ComidaData();
-        private Comida comida = new Comida();
-        private int sumacalorias;
-        int codigo=0;
-        int codigoComida=0;
-    
-    
-    
-    DefaultTableModel modelo= new DefaultTableModel() ;
+    private ArrayList<Paciente> listadoPaciente;
+    private ArrayList<Comida> listadocomida;
+    private ArrayList<Dieta> listadodieta;
+    private PacienteData pasdata = new PacienteData();
+    private Paciente pa = new Paciente();
+    private DietaData dieda = new DietaData();
+    private Dieta die = new Dieta();
+    private ItemComidasData cdata = new ItemComidasData();
+    private ComidaData comiData = new ComidaData();
+    private Comida comida = new Comida();
+    private int sumacalorias;
+    int codigo = 0;
+    int codigoComida = 0;
 
-    
+    DefaultTableModel modelo = new DefaultTableModel();
+
     public MenuDieta() {
         initComponents();
         armarTabla();
-        
-       
-       listadoPaciente= pasdata.obtenerPaciente();
-       for (Paciente paciente : listadoPaciente ){
-           this.combopacientes.addItem(paciente);
-       }
-       listadocomida=comiData.obtenerComida();
-        for (Comida aux  : listadocomida) {
-            this.jComboComidas.addItem(aux);
-            
+
+        listadoPaciente = pasdata.obtenerPaciente();
+        for (Paciente paciente : listadoPaciente) {
+            this.combopacientes.addItem(paciente);
         }
-       
+        listadocomida = comiData.obtenerComida();
+        for (Comida aux : listadocomida) {
+            this.jComboComidas.addItem(aux);
+
+        }
+
     }
 
     @SuppressWarnings("unchecked")
@@ -107,6 +103,7 @@ public class MenuDieta extends javax.swing.JInternalFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jBSalir = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
@@ -433,6 +430,13 @@ public class MenuDieta extends javax.swing.JInternalFrame {
                 .addContainerGap(36, Short.MAX_VALUE))
         );
 
+        jBSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Iconos/salida.png"))); // NOI18N
+        jBSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSalirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -444,8 +448,31 @@ public class MenuDieta extends javax.swing.JInternalFrame {
                         .addComponent(jComboComidas, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(0, 0, Short.MAX_VALUE)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(150, 150, 150)
+                                    .addComponent(combopacientes, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(222, 222, 222)
+                                    .addComponent(jButton1))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(257, 257, 257)
+                                    .addComponent(jLabel1))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 783, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(250, 250, 250)
+                                    .addComponent(jLabel8)))
+                            .addGap(26, 26, 26)
+                            .addComponent(panelModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                    .addGap(260, 260, 260)
+                                    .addComponent(jLabel2))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                     .addContainerGap()
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(jPanel1Layout.createSequentialGroup()
@@ -458,32 +485,13 @@ public class MenuDieta extends javax.swing.JInternalFrame {
                                             .addGap(182, 182, 182)))
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jAgregarComida)
-                                        .addComponent(jQuitarComida)))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(260, 260, 260)
-                                    .addComponent(jLabel2)))
-                            .addGap(122, 122, 122)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(150, 150, 150)
-                                    .addComponent(combopacientes, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(222, 222, 222)
-                                    .addComponent(jButton1))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(257, 257, 257)
-                                    .addComponent(jLabel1))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addContainerGap()
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 783, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(250, 250, 250)
-                                    .addComponent(jLabel8)))
-                            .addGap(26, 26, 26)
-                            .addComponent(panelModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(1029, 1522, Short.MAX_VALUE))
+                                        .addComponent(jQuitarComida))
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jBSalir)))
+                            .addGap(0, 1, Short.MAX_VALUE))))
+                .addGap(1029, 1497, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -502,13 +510,14 @@ public class MenuDieta extends javax.swing.JInternalFrame {
                         .addComponent(jLabel8))
                     .addComponent(panelModificar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jComboComidas, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel2)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jComboComidas, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel2)
                         .addGap(5, 5, 5)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -519,7 +528,9 @@ public class MenuDieta extends javax.swing.JInternalFrame {
                                 .addComponent(jAgregarComida)
                                 .addGap(18, 18, 18)
                                 .addComponent(jQuitarComida))))
-                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addComponent(jBSalir)))
                 .addContainerGap(412, Short.MAX_VALUE))
         );
 
@@ -538,60 +549,75 @@ public class MenuDieta extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       this.jTextPesoBuscado.setText("");
-       this.jTextCalorias.setText("");
-       this.jTextfechaFinal.setText("");
-       this.jTextpesoInicial.setText("");
-       this.jTextlimiteCalorico.setText("");
-       DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-       String fecha = String.valueOf(LocalDate.now().toString());
-       LocalDate inputAdDate = LocalDate.parse(fecha, formatter);
-       java.util.Date f = Date.from(inputAdDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
-       this.jTextinicio.setDate(f);
-       this.jTextfechaFinal.setText(LocalDate.now().plusDays(7).format(formatter).toString());
+        this.jTextPesoBuscado.setText("");
+        this.jTextCalorias.setText("");
+        this.jTextfechaFinal.setText("");
+        this.jTextpesoInicial.setText("");
+        this.jTextlimiteCalorico.setText("");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String fecha = String.valueOf(LocalDate.now().toString());
+        LocalDate inputAdDate = LocalDate.parse(fecha, formatter);
+        java.util.Date f = Date.from(inputAdDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+        this.jTextinicio.setDate(f);
+        this.jTextfechaFinal.setText(LocalDate.now().plusDays(7).format(formatter).toString());
 
-       cargarTabla();
-      
-      
-      
+        cargarTabla();
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void combopacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combopacientesActionPerformed
-     
-      
+
+
     }//GEN-LAST:event_combopacientesActionPerformed
 
     private void guardarModicarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarModicarActionPerformed
-    Dieta d = new Dieta();
-    
-    d.setPesoBuscado(Double.parseDouble(jTextPesoBuscado.getText()));
-    d.setPesoInicial(Double.parseDouble(jTextpesoInicial.getText()));
-    d.setLimiteCalorico(Integer.parseInt(jTextlimiteCalorico.getText()));
-    d.setInicio(LocalDate.parse( new SimpleDateFormat("yyyy-MM-dd").format(jTextinicio.getDate())));
-    d.setFin(d.getInicio().plusDays(7));
-    jTextfechaFinal.setText(d.getInicio().plusDays(7).toString());
-    d.setIdPaciente((Paciente) combopacientes.getSelectedItem());
-    d.setEstado(true);
-    
-    dieda.GuardarDieta(d);
-    cargarTabla();
-   // guardarModicar.setEnabled(false);
+        Dieta d = new Dieta();
+        DietaData dieta =new DietaData();
+        try {
+            d.setPesoBuscado(Double.parseDouble(jTextPesoBuscado.getText()));
+            d.setPesoInicial(Double.parseDouble(jTextpesoInicial.getText()));
+            d.setLimiteCalorico(Integer.parseInt(jTextlimiteCalorico.getText()));
+            d.setInicio(LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(jTextinicio.getDate())));
+            d.setFin(d.getInicio().plusDays(7));
+            jTextfechaFinal.setText(d.getInicio().plusDays(7).toString());
+            d.setIdPaciente((Paciente) combopacientes.getSelectedItem());
+            d.setEstado(true);
+            
+            pa = (Paciente) combopacientes.getSelectedItem();
+            int id = pa.getIdPaciente();
+            LocalDate fInicio = d.getInicio();
+            LocalDate fFin = d.getFin();
+             
+            
+           if (!dieta.DietanEnLaFecha(id, fInicio, fFin)) {
+                    dieda.GuardarDieta(d);
+                    cargarTabla();
+                    
+                }
+          
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(this, "Completar los campos");
+        }
+
+        // guardarModicar.setEnabled(false);
     }//GEN-LAST:event_guardarModicarActionPerformed
 
     private void modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarActionPerformed
-    Dieta d = new Dieta();
-    int filaSeleccionada = gDieta1.getSelectedRow();
-    d.setPesoBuscado(Double.parseDouble(jTextPesoBuscado.getText()));
-    d.setPesoInicial(Double.parseDouble(jTextpesoInicial.getText()));
-    d.setLimiteCalorico(Integer.parseInt(jTextlimiteCalorico.getText()));
-    d.setInicio(LocalDate.parse( new SimpleDateFormat("yyyy-MM-dd").format(jTextinicio.getDate())));
-    d.setFin(d.getInicio().plusDays(7));
-    d.setIdPaciente((Paciente) combopacientes.getSelectedItem());
-    //d.setEstado(true);
-    d.setIdDieta((int) gDieta1.getValueAt(filaSeleccionada, 0));
-    dieda.actualizaDieta(d);
-    cargarTabla();
-    modificar.setEnabled(false);
+        Dieta d = new Dieta();
+        int filaSeleccionada = gDieta1.getSelectedRow();
+        d.setPesoBuscado(Double.parseDouble(jTextPesoBuscado.getText()));
+        d.setPesoInicial(Double.parseDouble(jTextpesoInicial.getText()));
+        d.setLimiteCalorico(Integer.parseInt(jTextlimiteCalorico.getText()));
+        d.setInicio(LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(jTextinicio.getDate())));
+        d.setFin(d.getInicio().plusDays(7));
+        d.setIdPaciente((Paciente) combopacientes.getSelectedItem());
+        //d.setEstado(true);
+        d.setIdDieta((int) gDieta1.getValueAt(filaSeleccionada, 0));
+        dieda.actualizaDieta(d);
+        cargarTabla();
+        modificar.setEnabled(false);
     }//GEN-LAST:event_modificarActionPerformed
 
     private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
@@ -604,8 +630,8 @@ public class MenuDieta extends javax.swing.JInternalFrame {
         this.jTextfechaFinal.setText("");
         this.jTextpesoInicial.setText("");
         this.jTextlimiteCalorico.setText("");
-        
-      //  eliminar.setVisible(false);
+
+        //  eliminar.setVisible(false);
     }//GEN-LAST:event_eliminarActionPerformed
 
     private void jTextlimiteCaloricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextlimiteCaloricoActionPerformed
@@ -613,27 +639,26 @@ public class MenuDieta extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTextlimiteCaloricoActionPerformed
 
     private void gDieta1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gDieta1MouseClicked
-    
-    
-      codigo=Integer.parseInt(String.valueOf(modelo.getValueAt(this.gDieta1.getSelectedRow(), 0)));
-      armarComida(codigo);
-      int filaSeleccionada = gDieta1.getSelectedRow();
-      modificar.setEnabled(true);
-      eliminar.setEnabled(true);
-      jTextPesoBuscado.setText(String.valueOf(gDieta1.getValueAt(filaSeleccionada, 3)));
-      jTextpesoInicial.setText((String.valueOf(gDieta1.getValueAt(filaSeleccionada, 4))));
-      jTextlimiteCalorico.setText((String.valueOf(gDieta1.getValueAt(filaSeleccionada, 5))));
-      //jTextinicio.setText(Date.parse(gDieta1.getValueAt(filaSeleccionada) ,1);
-      //jTextfechaFinal.setText((String)gDieta1.getValueAt(filaSeleccionada, 2));
-    
-      //Insertar fecha en jcalendar
-      DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-      String fecha = String.valueOf(modelo.getValueAt(this.gDieta1.getSelectedRow(), 1));
-      LocalDate inputAdDate = LocalDate.parse(fecha, formatter);
-      java.util.Date f = Date.from(inputAdDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
-      this.jTextinicio.setDate(f);
-      
-  
+
+        codigo = Integer.parseInt(String.valueOf(modelo.getValueAt(this.gDieta1.getSelectedRow(), 0)));
+        armarComida(codigo);
+        int filaSeleccionada = gDieta1.getSelectedRow();
+        modificar.setEnabled(true);
+        eliminar.setEnabled(true);
+        jTextPesoBuscado.setText(String.valueOf(gDieta1.getValueAt(filaSeleccionada, 3)));
+        jTextpesoInicial.setText((String.valueOf(gDieta1.getValueAt(filaSeleccionada, 4))));
+        jTextlimiteCalorico.setText((String.valueOf(gDieta1.getValueAt(filaSeleccionada, 5))));
+        //jTextinicio.setText(Date.parse(gDieta1.getValueAt(filaSeleccionada) ,1);
+        //jTextfechaFinal.setText((String)gDieta1.getValueAt(filaSeleccionada, 2));
+
+        //Insertar fecha en jcalendar
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String fecha = String.valueOf(modelo.getValueAt(this.gDieta1.getSelectedRow(), 1));
+        LocalDate inputAdDate = LocalDate.parse(fecha, formatter);
+        java.util.Date f = Date.from(inputAdDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+        this.jTextinicio.setDate(f);
+
+
     }//GEN-LAST:event_gDieta1MouseClicked
 
     private void jTextPesoBuscadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextPesoBuscadoActionPerformed
@@ -641,46 +666,46 @@ public class MenuDieta extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTextPesoBuscadoActionPerformed
 
     private void jTextinicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextinicioMouseClicked
-        
-jTextfechaFinal.setText(LocalDate.parse( new SimpleDateFormat("yyyy-MM-dd").format(jTextinicio.getDate())).plusDays(7).toString());
+
+        jTextfechaFinal.setText(LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(jTextinicio.getDate())).plusDays(7).toString());
     }//GEN-LAST:event_jTextinicioMouseClicked
 
     private void jTextinicioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextinicioMouseExited
         // TODO add your handling code here:
-        jTextfechaFinal.setText(LocalDate.parse( new SimpleDateFormat("yyyy-MM-dd").format(jTextinicio.getDate())).plusDays(7).toString());
+        jTextfechaFinal.setText(LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(jTextinicio.getDate())).plusDays(7).toString());
     }//GEN-LAST:event_jTextinicioMouseExited
 
     private void jAgregarComidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAgregarComidaActionPerformed
         // TODO add your handling code here:
         Comida c = new Comida();
-        c=(Comida)jComboComidas.getSelectedItem();
+        c = (Comida) jComboComidas.getSelectedItem();
         DefaultTableModel modelod = (DefaultTableModel) this.gDieta1.getModel();
-        int maximo=Integer.parseInt(String.valueOf(modelod.getValueAt(this.gDieta1.getSelectedRow(), 5)));
-        if(sumacalorias + c.getCalorias() <= maximo ){
-            int obtenerDieta=Integer.parseInt(String.valueOf(modelod.getValueAt(this.gDieta1.getSelectedRow(), 0)));
+        int maximo = Integer.parseInt(String.valueOf(modelod.getValueAt(this.gDieta1.getSelectedRow(), 5)));
+        if (sumacalorias + c.getCalorias() <= maximo) {
+            int obtenerDieta = Integer.parseInt(String.valueOf(modelod.getValueAt(this.gDieta1.getSelectedRow(), 0)));
             dieda.buscarDietaPorId(obtenerDieta);
-            Dieta i = new Dieta();  
-            i=dieda.buscarDietaPorId(obtenerDieta);
+            Dieta i = new Dieta();
+            i = dieda.buscarDietaPorId(obtenerDieta);
             cdata.GuardarComidaDieta(i, c);
             armarComida(obtenerDieta);
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, "La comida no se puede agregar porque supera el limite calorico");
         }
-        
+
     }//GEN-LAST:event_jAgregarComidaActionPerformed
 
     private void jQuitarComidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jQuitarComidaActionPerformed
         // TODO add your handling code here:
-        int codigoComida=0;
+        int codigoComida = 0;
         DefaultTableModel modelo = (DefaultTableModel) this.gComida1.getModel();
-        codigoComida=Integer.parseInt(String.valueOf(modelo.getValueAt(this.gComida1.getSelectedRow(), 0)));
+        codigoComida = Integer.parseInt(String.valueOf(modelo.getValueAt(this.gComida1.getSelectedRow(), 0)));
         cdata.eliminarComidaDieta(codigoComida);
         armarComida(codigo);
-         
+
     }//GEN-LAST:event_jQuitarComidaActionPerformed
 
     private void jComboComidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboComidasActionPerformed
-  // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_jComboComidasActionPerformed
 
     private void jTextCaloriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextCaloriasActionPerformed
@@ -697,7 +722,7 @@ jTextfechaFinal.setText(LocalDate.parse( new SimpleDateFormat("yyyy-MM-dd").form
     }//GEN-LAST:event_jTextinicioPropertyChange
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       jPanel1.removeAll();
+        jPanel1.removeAll();
         jPanel1.repaint();
         PacXkilos1 pk = new PacXkilos1();
         jPanel1.removeAll();
@@ -709,10 +734,8 @@ jTextfechaFinal.setText(LocalDate.parse( new SimpleDateFormat("yyyy-MM-dd").form
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
- 
 
-        
-       jPanel1.removeAll();
+        jPanel1.removeAll();
         jPanel1.repaint();
         DietasActivas die = new DietasActivas();
         jPanel1.removeAll();
@@ -725,7 +748,7 @@ jTextfechaFinal.setText(LocalDate.parse( new SimpleDateFormat("yyyy-MM-dd").form
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-          jPanel1.removeAll();
+        jPanel1.removeAll();
         jPanel1.repaint();
         BusquedaXFechas bus = new BusquedaXFechas();
         jPanel1.removeAll();
@@ -736,7 +759,7 @@ jTextfechaFinal.setText(LocalDate.parse( new SimpleDateFormat("yyyy-MM-dd").form
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTextPesoBuscadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextPesoBuscadoKeyTyped
-        
+
         char c = evt.getKeyChar();
 
         if (c < '0' || c > '9') {
@@ -745,7 +768,7 @@ jTextfechaFinal.setText(LocalDate.parse( new SimpleDateFormat("yyyy-MM-dd").form
     }//GEN-LAST:event_jTextPesoBuscadoKeyTyped
 
     private void jTextpesoInicialKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextpesoInicialKeyTyped
-        
+
         char c = evt.getKeyChar();
 
         if (c < '0' || c > '9') {
@@ -754,7 +777,7 @@ jTextfechaFinal.setText(LocalDate.parse( new SimpleDateFormat("yyyy-MM-dd").form
     }//GEN-LAST:event_jTextpesoInicialKeyTyped
 
     private void jTextlimiteCaloricoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextlimiteCaloricoKeyTyped
-       
+
         char c = evt.getKeyChar();
 
         if (c < '0' || c > '9') {
@@ -762,11 +785,14 @@ jTextfechaFinal.setText(LocalDate.parse( new SimpleDateFormat("yyyy-MM-dd").form
         }
     }//GEN-LAST:event_jTextlimiteCaloricoKeyTyped
 
-  
-    
-    private void armarTabla(){
-       
-       //titulos de las columnas
+    private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
+        // TODO add your handling code here:
+         dispose();
+    }//GEN-LAST:event_jBSalirActionPerformed
+
+    private void armarTabla() {
+
+        //titulos de las columnas
         ArrayList<Object> columnas = new ArrayList<Object>();
         columnas.add("Id Dieta");
         columnas.add("inicio");
@@ -778,29 +804,26 @@ jTextfechaFinal.setText(LocalDate.parse( new SimpleDateFormat("yyyy-MM-dd").form
             modelo.addColumn(it);
         }
         gDieta1.setModel(modelo);
-    }    
-        
-    private void armarComida(int idDieta){
-        ArrayList <ItemComidas> comi = new ArrayList();
-        comi= comiData.obtenerComidaPorDieta(idDieta);
-        String datos[]= new String[3];
+    }
+
+    private void armarComida(int idDieta) {
+        ArrayList<ItemComidas> comi = new ArrayList();
+        comi = comiData.obtenerComidaPorDieta(idDieta);
+        String datos[] = new String[3];
         DefaultTableModel modeloc = (DefaultTableModel) this.gComida1.getModel();
-         modeloc.setNumRows(0);
+        modeloc.setNumRows(0);
         sumacalorias = 0;
         for (ItemComidas aux : comi) {
-            datos[0] = aux.getIdItemComidas()+ "";
+            datos[0] = aux.getIdItemComidas() + "";
             datos[1] = aux.getIdComida().getNombre();
-            datos[2] = aux.getIdComida().getCalorias()+ "";
+            datos[2] = aux.getIdComida().getCalorias() + "";
             modeloc.addRow(datos);
-           
+
             sumacalorias = sumacalorias + aux.getIdComida().getCalorias();
         }
         this.jTextCalorias.setText(sumacalorias + "");
     }
-        
-    
-        
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<Paciente> combopacientes;
@@ -809,6 +832,7 @@ jTextfechaFinal.setText(LocalDate.parse( new SimpleDateFormat("yyyy-MM-dd").form
     private javax.swing.JTable gDieta1;
     private javax.swing.JButton guardarModicar;
     private javax.swing.JButton jAgregarComida;
+    private javax.swing.JButton jBSalir;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -841,11 +865,11 @@ jTextfechaFinal.setText(LocalDate.parse( new SimpleDateFormat("yyyy-MM-dd").form
     // End of variables declaration//GEN-END:variables
 
     private void cargarTabla() {
-    modelo.setNumRows(0);
-    listadodieta = dieda.obtenerDietaPorPaciente((Paciente)combopacientes.getSelectedItem());
+        modelo.setNumRows(0);
+        listadodieta = dieda.obtenerDietaPorPaciente((Paciente) combopacientes.getSelectedItem());
         for (Dieta aux : listadodieta) {
-            if(aux.isEstado()==true){
-            modelo.addRow(new Object[]{aux.getIdDieta(), aux.getInicio(),aux.getFin(),aux.getPesoBuscado(),aux.getPesoInicial(),aux.getLimiteCalorico()});            
+            if (aux.isEstado() == true) {
+                modelo.addRow(new Object[]{aux.getIdDieta(), aux.getInicio(), aux.getFin(), aux.getPesoBuscado(), aux.getPesoInicial(), aux.getLimiteCalorico()});
             }
         }
     }

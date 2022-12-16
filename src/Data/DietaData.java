@@ -414,53 +414,54 @@ public class DietaData {
         }
         return dietas;
     }
-        public ArrayList<Dieta>obtenerDietaActivas(){
-         ArrayList<Dieta> listado = new ArrayList();
-         
-         Dieta diet = new Dieta();
+
+    public ArrayList<Dieta> obtenerDietaActivas() {
+        ArrayList<Dieta> listado = new ArrayList();
+
+        Dieta diet = new Dieta();
         //String sql = "SELECT * FROM dieta, paciente WHERE dieta.idPaciente=paciente.idPaciente and dieta.fin>=CURRENT_DATE AND paciente.estado = true AND dieta.estado = true ORDER BY inicio DESC;";
-       String sql= "SELECT * FROM `dieta` WHERE estado=1";
-        pa= new PacienteData();
+        String sql = "SELECT * FROM `dieta` WHERE estado=1";
+        pa = new PacienteData();
         try {
-            PreparedStatement ps=con.prepareStatement(sql);
-            
-            ResultSet rs=ps.executeQuery();
-            
-            while(rs.next()){
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
                 diet = new Dieta();
-                
+
                 diet.setIdDieta(rs.getInt("idDieta"));
                 diet.setIdPaciente(pa.obtenerPacientePorId(rs.getInt("idPaciente")));
                 diet.setInicio(rs.getDate("inicio").toLocalDate());
                 diet.setFin(rs.getDate("fin").toLocalDate());
                 diet.setPesoBuscado(rs.getDouble("pesoBuscado"));
                 diet.setLimiteCalorico(rs.getInt("limiteCalorico"));
-                diet.setPesoInicial(rs.getDouble("pesoInicial"));                
-                
+                diet.setPesoInicial(rs.getDouble("pesoInicial"));
+
                 listado.add(diet);
             }
             ps.close();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null,"error"+e);
+            JOptionPane.showMessageDialog(null, "error" + e);
         }
         return listado;
-    }   
-             public ArrayList<Dieta> listadoDietasXPaciente(int idPaciente, LocalDate inicio, LocalDate fin){
+    }
+
+    public ArrayList<Dieta> listadoDietasXPaciente(int idPaciente, LocalDate inicio, LocalDate fin) {
         die = new Dieta();
-        ArrayList<Dieta>lista = new ArrayList();
+        ArrayList<Dieta> lista = new ArrayList();
         String sql = " SELECT * FROM dieta WHERE idPaciente = ? AND inicio >= ? AND fin <=?";
-       
+
         try {
-            
-            
+
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, idPaciente);
             ps.setDate(2, Date.valueOf(inicio));
             ps.setDate(3, Date.valueOf(fin));
-            
+
             ResultSet rs = ps.executeQuery();
-            
-            while(rs.next()){
+
+            while (rs.next()) {
                 die = new Dieta();
                 die.setIdDieta(rs.getInt("idDieta"));
                 die.setInicio(rs.getDate("inicio").toLocalDate());
@@ -472,10 +473,37 @@ public class DietaData {
                 lista.add(die);
             }
             ps.close();
-           
+
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null,"Error al buscar Dietas" + e);
+            JOptionPane.showMessageDialog(null, "Error al buscar Dietas" + e);
         }
         return lista;
     }
+
+    public boolean DietanEnLaFecha(int idPaciente, LocalDate inicio, LocalDate fin) {
+        die = new Dieta();
+
+        String sql = " SELECT * FROM dieta WHERE idPaciente = ? AND inicio >= ? AND fin <=?";
+
+        try {
+
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idPaciente);
+            ps.setDate(2, Date.valueOf(inicio));
+            ps.setDate(3, Date.valueOf(fin));
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                JOptionPane.showMessageDialog(null, "Existe una dieta en ese Rango de Fechas");
+                return true;
+            }
+            ps.close();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error dieta duplicada");
+        }
+        return false;
+    }
+
 }
