@@ -206,6 +206,11 @@ public class Comidas extends javax.swing.JInternalFrame {
 
         jTFId.setFont(new java.awt.Font("Segoe Script", 0, 12)); // NOI18N
         jTFId.setEnabled(false);
+        jTFId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTFIdActionPerformed(evt);
+            }
+        });
         jTFId.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTFIdKeyTyped(evt);
@@ -674,6 +679,10 @@ public class Comidas extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_jBSalirActionPerformed
+
+    private void jTFIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTFIdActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

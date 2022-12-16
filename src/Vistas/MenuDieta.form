@@ -130,8 +130,8 @@
                       <Component id="panelModificar" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <Component id="jComboComidas" min="-2" pref="39" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
@@ -357,13 +357,18 @@
             <Component class="javax.swing.JTextField" name="jTextPesoBuscado">
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextPesoBuscadoActionPerformed"/>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextPesoBuscadoKeyTyped"/>
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextpesoInicial">
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextpesoInicialKeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextlimiteCalorico">
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextlimiteCaloricoActionPerformed"/>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextlimiteCaloricoKeyTyped"/>
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextfechaFinal">
@@ -572,7 +577,6 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jButton2" alignment="1" min="-2" pref="173" max="-2" attributes="0"/>
                                   <Component id="jButton3" alignment="1" min="-2" pref="173" max="-2" attributes="0"/>
-                                  <Component id="jButton4" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Component id="jButton5" alignment="1" min="-2" pref="173" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -594,11 +598,9 @@
                       <Component id="jButton2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButton3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButton4" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jButton5" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="27" max="32767" attributes="0"/>
+                      <EmptySpace pref="36" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -628,21 +630,10 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe Script" size="16" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Kilos"/>
+                <Property name="text" type="java.lang.String" value="Kilos bajados"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="jButton4">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe Script" size="16" style="1"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Kilos no bajados"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton5">

@@ -418,7 +418,8 @@ public class DietaData {
          ArrayList<Dieta> listado = new ArrayList();
          
          Dieta diet = new Dieta();
-        String sql = "SELECT * FROM dieta, paciente WHERE dieta.idPaciente=paciente.idPaciente and dieta.fin>=CURRENT_DATE AND paciente.estado = true AND dieta.estado = true ORDER BY inicio DESC;";
+        //String sql = "SELECT * FROM dieta, paciente WHERE dieta.idPaciente=paciente.idPaciente and dieta.fin>=CURRENT_DATE AND paciente.estado = true AND dieta.estado = true ORDER BY inicio DESC;";
+       String sql= "SELECT * FROM `dieta` WHERE estado=1";
         pa= new PacienteData();
         try {
             PreparedStatement ps=con.prepareStatement(sql);

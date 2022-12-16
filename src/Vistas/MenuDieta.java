@@ -106,7 +106,6 @@ public class MenuDieta extends javax.swing.JInternalFrame {
         jLabel10 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
@@ -173,10 +172,26 @@ public class MenuDieta extends javax.swing.JInternalFrame {
                 jTextPesoBuscadoActionPerformed(evt);
             }
         });
+        jTextPesoBuscado.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextPesoBuscadoKeyTyped(evt);
+            }
+        });
+
+        jTextpesoInicial.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextpesoInicialKeyTyped(evt);
+            }
+        });
 
         jTextlimiteCalorico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextlimiteCaloricoActionPerformed(evt);
+            }
+        });
+        jTextlimiteCalorico.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextlimiteCaloricoKeyTyped(evt);
             }
         });
 
@@ -372,18 +387,10 @@ public class MenuDieta extends javax.swing.JInternalFrame {
         });
 
         jButton3.setFont(new java.awt.Font("Segoe Script", 1, 16)); // NOI18N
-        jButton3.setText("Kilos");
+        jButton3.setText("Kilos bajados");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
-            }
-        });
-
-        jButton4.setFont(new java.awt.Font("Segoe Script", 1, 16)); // NOI18N
-        jButton4.setText("Kilos no bajados");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
             }
         });
 
@@ -406,7 +413,6 @@ public class MenuDieta extends javax.swing.JInternalFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jButton5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
@@ -422,11 +428,9 @@ public class MenuDieta extends javax.swing.JInternalFrame {
                 .addComponent(jButton2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton3)
-                .addGap(18, 18, 18)
-                .addComponent(jButton4)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton5)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -498,7 +502,7 @@ public class MenuDieta extends javax.swing.JInternalFrame {
                         .addComponent(jLabel8))
                     .addComponent(panelModificar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jComboComidas, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -515,7 +519,7 @@ public class MenuDieta extends javax.swing.JInternalFrame {
                                 .addComponent(jAgregarComida)
                                 .addGap(18, 18, 18)
                                 .addComponent(jQuitarComida))))
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(412, Short.MAX_VALUE))
         );
 
@@ -719,10 +723,6 @@ jTextfechaFinal.setText(LocalDate.parse( new SimpleDateFormat("yyyy-MM-dd").form
 
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
           jPanel1.removeAll();
@@ -734,6 +734,33 @@ jTextfechaFinal.setText(LocalDate.parse( new SimpleDateFormat("yyyy-MM-dd").form
         jPanel1.add(bus);
         jPanel1.repaint();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTextPesoBuscadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextPesoBuscadoKeyTyped
+        
+        char c = evt.getKeyChar();
+
+        if (c < '0' || c > '9') {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextPesoBuscadoKeyTyped
+
+    private void jTextpesoInicialKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextpesoInicialKeyTyped
+        
+        char c = evt.getKeyChar();
+
+        if (c < '0' || c > '9') {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextpesoInicialKeyTyped
+
+    private void jTextlimiteCaloricoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextlimiteCaloricoKeyTyped
+       
+        char c = evt.getKeyChar();
+
+        if (c < '0' || c > '9') {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextlimiteCaloricoKeyTyped
 
   
     
@@ -785,7 +812,6 @@ jTextfechaFinal.setText(LocalDate.parse( new SimpleDateFormat("yyyy-MM-dd").form
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private com.toedter.calendar.JCalendar jCalendar1;
     private javax.swing.JComboBox<Comida> jComboComidas;
